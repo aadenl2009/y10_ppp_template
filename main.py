@@ -41,9 +41,12 @@ def first_two_cards():
     
     # draw the cards
     draw_two_cards(user_hand, user_score)
-
     print(f"Your hand: {user_hand}")
 
     draw_two_cards(dealer_hand, dealer_score)
+    print(f"Dealer's hand: {dealer_hand[0]}, x")
+
+def draw_cards():
+    hit_stand = input("Hit or stand? (y/n)")
 
 first_two_cards()
