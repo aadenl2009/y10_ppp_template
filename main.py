@@ -1,3 +1,6 @@
-# testing
+# blackjack
 
-print("Hello World")
+import random
+import colorama
+
+print ("Welcome to BlackJack!\n🟥🟧")
