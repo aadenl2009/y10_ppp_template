@@ -40,7 +40,7 @@ def game_start():
     bet = input(f"You currently have {user_money}. Please place your bet:")
 
     if user_score == 21:
-        print("BlackJack! You Win!")
+        print("BlackJack! You win!")
         user_money += bet * 1.5
         play_again = input((f"You now have {user_money}. Play again? (y/n)"))
 
