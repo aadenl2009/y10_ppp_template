@@ -21,32 +21,29 @@ dealer_score = 0
 
 def draw_two_cards(x, y):
     for i in range(2):
-        x.append(randint(1, 13))
-        if x[i] == 11:
+
+        num = randint(1, 13)
+        if num == 11:
             x.append("jack")
-        elif x[i] == 12:
+        elif num == 12:
             x.append("queen")
-        elif x[i] == 13:
+        elif num == 13:
             x.append("king")
         
-        if x[i] == "jack" or "queen" or "king":
+        if num > 10:
             y += 10
         else:
-            y += x[i]
-    
-    print(x)
-    print(y)
+            y += num
+            x.append(num)
 
 def first_two_cards():
     bet = input(f"You currently have {user_money}. Please place your bet:")
     
     # draw the cards
-    
-        
-        # repeat for the dealer     
+    draw_two_cards(user_hand, user_score)
 
-    print(user_hand)
-    print(user_score)
+    
+
+    draw_two_cards(dealer_hand, dealer_score)
 
 first_two_cards()
-draw_two_cards(user_hand, user_score)
