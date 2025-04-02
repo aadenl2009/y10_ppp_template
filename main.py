@@ -90,5 +90,6 @@ def dealer_show():
         print("Dealer wins! Better luck next time.")
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
+    print(dealer_score)
 
 game_start()
