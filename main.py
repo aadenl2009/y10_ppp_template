@@ -1,11 +1,8 @@
-
-# blackjack
-
 import random
 import colorama
 from random import randint
 
-print ("Welcome to BlackJack!\n🟥🟧🟨🟩🟦🟪🟫⬛⬜")
+print("Welcome to BlackJack!")
 
 user_money = 1000
 
@@ -33,7 +30,15 @@ def draw_two_cards(x, y):
             x.append(num)
 
 def game_start():
-    bet = input(f"You currently have {user_money}. Please place your bet:")
+
+    global user_money
+    bet = input(f"You currently have {user_money}. Please place your bet:").strip()
+
+    # checks if bet is a whole number
+    while not bet.isnumeric():
+        bet = input(f"You currently have {user_money}. Please place your bet:")
+    
+    bet = int(bet)
 
     if user_score == 21:
         print("BlackJack! You win!")
@@ -42,15 +47,22 @@ def game_start():
 
         if play_again == "y":
             game_start()
-
     else:
         draw_two_cards(user_hand, user_score)
         print(f"Your hand: {user_hand}")
 
         draw_two_cards(dealer_hand, dealer_score)
         print(f"Dealer's hand: {dealer_hand[0]}, x")
+    
+    draw_cards()
 
 def draw_cards():
-    hit_stand = input("Hit or stand? (y/n)")
+    hit_stand = input("Hit or stand? (y/n)").lower().strip()
+
+    while hit_stand != "y" or hit_stand != "n":
+        hit_stand = input("Hit or stand? (y/n)")
+
+    
+        
 
 game_start()
