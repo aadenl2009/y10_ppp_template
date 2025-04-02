@@ -79,7 +79,7 @@ def main():
 def dealer_show():
 
     global dealer_score
-
+    global user_score
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
         dealer_score += draw_card(dealer_hand, dealer_score)
@@ -93,5 +93,6 @@ def dealer_show():
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
     print(dealer_score)
+    print(user_score)
 
 game_start()
