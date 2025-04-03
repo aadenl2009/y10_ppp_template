@@ -22,6 +22,7 @@ def draw_two_cards():
     global dealer_hand
 
     score, hand = draw_card(user_hand, user_score)
+
     user_score += score
     user_hand += hand
 
