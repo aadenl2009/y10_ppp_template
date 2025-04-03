@@ -20,9 +20,9 @@ def draw_two_cards():
     global dealer_score
 
     for i in range(2):
-        user_score, user_hand += draw_card(user_hand, user_score)
+        user_score += draw_card(user_hand, user_score)
 
-        dealer_score, dealer_hand += draw_card(dealer_hand, dealer_score)
+        dealer_score += draw_card(dealer_hand, dealer_score)
 
 def draw_card(hand, score):
 
