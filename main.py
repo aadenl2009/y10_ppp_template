@@ -55,13 +55,15 @@ def game_start():
     global bet
     global user_money
 
-    bet = input(f"You currently have {user_money}. Please place your bet:").strip()
+    bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
+
+    while bet > user_money:
+        bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
 
     # checks if bet is a whole number
     while not bet.isnumeric():
         bet = input(f"You currently have {user_money}. Please place your bet:")
     
-    bet = int(bet)
 
     draw_two_cards()
 
@@ -86,7 +88,7 @@ def dealer_show():
     global user_money
     global dealer_hand
     global bet
-    
+
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
