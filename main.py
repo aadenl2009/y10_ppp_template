@@ -82,6 +82,7 @@ def dealer_show():
     global dealer_hand
 
     print(f"Dealer hand: {dealer_hand}")
+    print(dealer_score)
     while dealer_score < 17:
         score, hand = draw_card(dealer_hand, dealer_score)
         dealer_score += score
