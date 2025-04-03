@@ -53,6 +53,8 @@ def game_start():
     
     bet = int(bet)
 
+    draw_two_cards()
+
     if user_score == 21:
         print("BlackJack! You win!")
         user_money += bet * 1.5
@@ -61,8 +63,6 @@ def game_start():
         if play_again == "y":
             game_start()
     else:
-        draw_two_cards()
-
         print(f"Your hand: {user_hand}")
 
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
@@ -73,7 +73,7 @@ def dealer_show():
 
     global dealer_score
     global user_score
-    
+
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
         dealer_score += draw_card(dealer_hand, dealer_score)
