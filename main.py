@@ -24,12 +24,12 @@ def draw_two_cards():
     for i in range(2):
         hand, score = draw_card(user_hand, user_score)
         user_score += score
-        user_hand += hand
+        user_hand.append(hand)
 
     for i in range(2):
         hand, score = draw_card(dealer_hand, dealer_score)
         dealer_score += score
-        dealer_hand += hand
+        dealer_hand.append(hand)
 
 
 def draw_card(hand, score):
@@ -88,7 +88,7 @@ def dealer_show():
     while dealer_score < 17:
         hand, score = draw_card(dealer_hand, dealer_score)
         dealer_score += score
-        dealer_hand += hand
+        dealer_hand.append(hand)
     print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
