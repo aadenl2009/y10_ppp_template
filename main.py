@@ -76,7 +76,7 @@ def dealer_show():
 
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
-        dealer_score, dealer_hand += draw_card(dealer_hand, dealer_score)
+        dealer_score += draw_card(dealer_hand, dealer_score)
     print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
