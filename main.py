@@ -112,6 +112,7 @@ def main():
 
     while hit_stand == "hit" and user_score < 21:
         user_hand = draw_card(user_hand)
+        user_score = calculate_score(user_hand)
         print(print(f"Your hand: {user_hand}"))
         hit_stand = input("Hit or stand?")
         
