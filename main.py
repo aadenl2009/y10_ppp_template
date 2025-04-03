@@ -86,7 +86,7 @@ def dealer_show():
     global user_money
     global dealer_hand
     global bet
-
+    
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
@@ -95,18 +95,26 @@ def dealer_show():
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
     print(f"Your hand: {user_hand}")
+
+    # dealer bust
     if dealer_score > 21:
         print("Dealer bust! Congratulations, you win!")
         user_money += bet
         print(f"You now have {user_money}.")
+
+    # dealer higher than user
     if dealer_score > user_score and dealer_score <= 21:
         print("Dealer wins! Better luck next time.")
         user_money -= bet
         print(f"You now have {user_money}.")
+    
+    # user higher than dealer
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
         user_money += bet
         print(f"You now have {user_money}.")
+
+    # push
     elif dealer_score == user_score and dealer_score <= 21:
         print("Push!")
         print(f"You now have {user_money}.")
