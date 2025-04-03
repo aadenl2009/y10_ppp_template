@@ -24,12 +24,14 @@ def draw_two_cards():
     for i in range(2):
         hand, score = draw_card(user_hand, user_score)
         user_score += score
-        user_hand.append(hand)
+        for card in hand:
+            user_hand.append(card)
 
     for i in range(2):
         hand, score = draw_card(dealer_hand, dealer_score)
         dealer_score += score
-        dealer_hand.append(hand)
+        for card in hand:
+            dealer_hand.append(card)
 
 
 def draw_card(hand, score):
