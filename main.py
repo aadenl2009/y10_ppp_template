@@ -103,6 +103,7 @@ def dealer_show():
 def main():
 
     global user_hand
+    global user_score
 
     hit_stand = input("Hit or stand?").lower().strip()
 
