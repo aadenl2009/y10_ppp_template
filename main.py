@@ -92,6 +92,7 @@ def dealer_show():
     print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
+    print(f"Your hand: {user_hand}")
     if dealer_score > 21:
         print("Dealer bust! Congratulations, you win!")
     if dealer_score > user_score and dealer_score <= 21:
