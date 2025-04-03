@@ -51,8 +51,10 @@ def draw_card(hand):
     return added
 
 def game_start():
- 
+
+    global bet
     global user_money
+
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
 
     # checks if bet is a whole number
@@ -81,7 +83,9 @@ def dealer_show():
 
     global dealer_score
     global user_score
+    global user_money
     global dealer_hand
+    global bet
 
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
@@ -93,12 +97,19 @@ def dealer_show():
     print(f"Your hand: {user_hand}")
     if dealer_score > 21:
         print("Dealer bust! Congratulations, you win!")
+        user_money += bet
+        print(f"You now have {user_money}.")
     if dealer_score > user_score and dealer_score <= 21:
         print("Dealer wins! Better luck next time.")
+        user_money -= bet
+        print(f"You now have {user_money}.")
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
+        user_money += bet
+        print(f"You now have {user_money}.")
     elif dealer_score == user_score and dealer_score <= 21:
         print("Push!")
+        print(f"You now have {user_money}.")
 
 def main():
 
@@ -111,14 +122,13 @@ def main():
         hit_stand = input("Hit or stand?")
 
     while hit_stand == "hit":
-        if user_score > 21:
-            break
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
+        if user_score > 21:
+            break
         print(f"Your hand: {user_hand}")
         hit_stand = input("Hit or stand?")
-        
-    if hit_stand == "stand":
-        dealer_show()
+
+    dealer_show()
 
 game_start()
