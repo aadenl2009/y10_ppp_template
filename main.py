@@ -20,9 +20,9 @@ def draw_two_cards():
     global dealer_score
 
     for i in range(2):
-        user_score += draw_card(user_hand, user_score)
+        user_score, user_hand += draw_card(user_hand, user_score)
 
-        dealer_score += draw_card(dealer_hand, dealer_score)
+        dealer_score, dealer_hand += draw_card(dealer_hand, dealer_score)
 
 def draw_card(hand, score):
 
@@ -40,7 +40,7 @@ def draw_card(hand, score):
         score += num
         hand.append(num)
     
-    return score
+    return score, hand
 
 def game_start():
  
@@ -76,8 +76,7 @@ def dealer_show():
 
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
-        dealer_score += draw_card(dealer_hand, dealer_score)
-        dealer_hand.append(draw_card(dealer_hand, dealer_score))
+        dealer_score, dealer_hand += draw_card(dealer_hand, dealer_score)
     print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
