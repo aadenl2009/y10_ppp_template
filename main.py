@@ -18,17 +18,11 @@ def draw_two_cards():
 
     global user_score
     global dealer_score
-    global user_hand
-    global dealer_hand
 
     for i in range(2):
-        score, hand =  draw_card(user_hand, user_score)
-        user_score += score
-        user_hand += hand
+        user_score, user_hand += draw_card(user_hand, user_score)
 
-        score, hand =  draw_card(dealer_hand, dealer_score)
-        dealer_score += score
-        dealer_hand += hand
+        dealer_score, dealer_hand += draw_card(dealer_hand, dealer_score)
 
 def draw_card(hand, score):
 
@@ -79,13 +73,10 @@ def dealer_show():
 
     global dealer_score
     global user_score
-    global dealer_hand
 
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
-        score, hand =  draw_card(dealer_hand, dealer_score)
-        dealer_score += score
-        dealer_hand += hand
+        dealer_score, dealer_hand += draw_card(dealer_hand, dealer_score)
     print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
