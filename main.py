@@ -101,15 +101,20 @@ def dealer_show():
         print("Push!")
 
 def main():
+
+    global user_hand
+
     hit_stand = input("Hit or stand?").lower().strip()
 
     while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
         hit_stand = input("Hit or stand?")
 
-    if hit_stand == "hit":
-        draw_card(user_hand, user_score)
+    while hit_stand == "hit" and user_score < 21:
+        user_hand = draw_card(user_hand)
         print(print(f"Your hand: {user_hand}"))
-    else:
+        hit_stand = input("Hit or stand?")
+        
+    if hit_stand == "stand":
         dealer_show()
 
 game_start()
