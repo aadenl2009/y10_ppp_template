@@ -49,7 +49,7 @@ def draw_card(hand, score):
     else:
         score += num
         hand.append(num)
-    
+    print(hand)
     return hand, score
 
 def game_start():
