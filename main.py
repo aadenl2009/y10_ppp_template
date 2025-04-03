@@ -23,16 +23,26 @@ def draw_two_cards():
 
     for i in range(2):
         hand, score = draw_card(user_score)
-        user_score += score
+        user_score = calculate_score(user_hand)
         for card in hand:
             user_hand.append(card)
 
     for i in range(2):
         hand, score = draw_card(dealer_score)
-        dealer_score += score
+        dealer_score = calculate_score(dealer_hand)
         for card in hand:
             dealer_hand.append(card)
 
+def calculate_score(cards):
+    total = 0
+    for card in cards:
+
+        # check if it is an integer
+        if isinstance(card, int):
+            total += card
+        else:
+            total += 10
+    return total
 
 def draw_card(score):
     added = []
@@ -88,7 +98,7 @@ def dealer_show():
     print(dealer_score)
     while dealer_score < 17:
         hand, score = draw_card(dealer_score)
-        dealer_score += score
+        dealer_score = calculate_score(dealer_hand)
         dealer_hand.append(hand)
     print("Drawing cards...")
     sleep(2)
