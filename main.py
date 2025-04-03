@@ -110,7 +110,9 @@ def main():
     while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
         hit_stand = input("Hit or stand?")
 
-    while hit_stand == "hit" and user_score < 21:
+    while hit_stand == "hit":
+        if user_score > 21:
+            break
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
         print(f"Your hand: {user_hand}")
