@@ -35,7 +35,6 @@ def draw_two_cards():
 def draw_card(hand, score):
 
     num = randint(1, 13)
-    print(num)
     if num == 11:
         hand.append("jack")
     elif num == 12:
