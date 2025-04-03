@@ -35,6 +35,7 @@ def draw_two_cards():
 
 def calculate_score(cards):
     total = 0
+    print(cards)
     for card in cards:
 
         # check if it is an integer
