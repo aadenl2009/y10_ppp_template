@@ -69,22 +69,11 @@ def game_start():
     
     main()
 
-def main():
-    hit_stand = input("Hit or stand?").lower().strip()
-
-    while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
-        hit_stand = input("Hit or stand?")
-
-    if hit_stand == "hit":
-        draw_card(user_hand, user_score)
-        print(print(f"Your hand: {user_hand}"))
-    else:
-        dealer_show()
-
 def dealer_show():
 
     global dealer_score
     global user_score
+    
     print(f"Dealer hand: {dealer_hand}")
     while dealer_score < 17:
         dealer_score += draw_card(dealer_hand, dealer_score)
@@ -99,5 +88,17 @@ def dealer_show():
         print("You win! Nice job!")
     print(dealer_score)
     print(user_score)
+
+def main():
+    hit_stand = input("Hit or stand?").lower().strip()
+
+    while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
+        hit_stand = input("Hit or stand?")
+
+    if hit_stand == "hit":
+        draw_card(user_hand, user_score)
+        print(print(f"Your hand: {user_hand}"))
+    else:
+        dealer_show()
 
 game_start()
