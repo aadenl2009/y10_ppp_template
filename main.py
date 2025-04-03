@@ -22,35 +22,34 @@ def draw_two_cards():
     global dealer_hand
 
     for i in range(2):
-        hand, score = draw_card(user_hand, user_score)
+        hand, score = draw_card(user_score)
         user_score += score
         for card in hand:
             user_hand.append(card)
 
     for i in range(2):
-        hand, score = draw_card(dealer_hand, dealer_score)
+        hand, score = draw_card(dealer_score)
         dealer_score += score
         for card in hand:
             dealer_hand.append(card)
 
 
-def draw_card(hand, score):
-
+def draw_card(score):
+    added = []
     num = randint(1, 13)
     if num == 11:
-        hand.append("jack")
+        added.append("jack")
     elif num == 12:
-        hand.append("queen")
+        added.append("queen")
     elif num == 13:
-        hand.append("king")
+        added.append("king")
     
     if num > 10:
         score += 10
     else:
         score += num
-        hand.append(num)
-    print(hand)
-    return hand, score
+        added.append(num)
+    return added, score
 
 def game_start():
  
@@ -88,7 +87,7 @@ def dealer_show():
     print(f"Dealer hand: {dealer_hand}")
     print(dealer_score)
     while dealer_score < 17:
-        hand, score = draw_card(dealer_hand, dealer_score)
+        hand, score = draw_card(dealer_score)
         dealer_score += score
         dealer_hand.append(hand)
     print("Drawing cards...")
