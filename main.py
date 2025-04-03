@@ -24,8 +24,6 @@ def draw_two_cards():
     for i in range(2):
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-
-    for i in range(2):
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
 
@@ -86,7 +84,6 @@ def dealer_show():
     global dealer_hand
 
     print(f"Dealer hand: {dealer_hand}")
-    print(dealer_score)
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
@@ -100,6 +97,8 @@ def dealer_show():
         print("Dealer wins! Better luck next time.")
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
+    elif dealer_score == user_score and dealer_score <= 21:
+        print("Push!")
 
 def main():
     hit_stand = input("Hit or stand?").lower().strip()
