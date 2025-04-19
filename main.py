@@ -79,7 +79,7 @@ def game_start():
 
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
     
-    main()
+    hit_stand()
 
 def dealer_show():
 
@@ -122,7 +122,7 @@ def dealer_show():
         print("Push!")
         print(f"You now have {user_money}.")
 
-def main():
+def hit_stand():
 
     global user_hand
     global user_score
@@ -136,9 +136,9 @@ def main():
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
         if user_score > 21:
-            break
+            print("Bust! Better luck next time!")
+
         print(f"Your hand: {user_hand}")
-        hit_stand = input("Hit or stand?")
 
     dealer_show()
 
