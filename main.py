@@ -61,10 +61,10 @@ def game_start():
         bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
 
     # checks if bet is a whole number
-    while not bet.isnumeric():
+    while bet.isnumeric() == False:
         bet = input(f"You currently have {user_money}. Please place your bet:")
     
-
+    
     draw_two_cards()
 
     if user_score == 21:
