@@ -140,6 +140,7 @@ def hit_stand():
             hit_stand = "stand"
             break
     
+        hit_stand = input("Hit or stand?")
         print(f"Your hand: {user_hand}")
 
     dealer_show()
