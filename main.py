@@ -55,14 +55,14 @@ def game_start():
     global bet
     global user_money
 
-    bet = input(f"You currently have {user_money}. Please place your bet:").strip()
+    bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
 
     # checks if bet is a whole number
     while str(float(bet))[-1] != "0":
         bet = int(input(f"You currently have {user_money}. Please place your bet:"))
     
     while bet > user_money:
-        bet = input(f"You currently have {user_money}. Please place your bet:").strip()
+        bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
 
     draw_two_cards()
 
@@ -140,7 +140,6 @@ def hit_stand():
             hit_stand = "stand"
             break
     
-        hit_stand = input("Hit or stand?")
         print(f"Your hand: {user_hand}")
 
     dealer_show()
