@@ -135,10 +135,14 @@ def hit_stand():
     while hit_stand == "hit":
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
+        hit_stand = input("Hit or stand?")
         if user_score > 21:
             print("Bust! Better luck next time!")
+            print(f"Your hand: {user_hand}")
+            hit_stand = "stand"
+            break
+    
         hit_stand = input("Hit or stand?")
-
         print(f"Your hand: {user_hand}")
 
     dealer_show()
