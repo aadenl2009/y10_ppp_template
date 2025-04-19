@@ -61,10 +61,10 @@ def game_start():
         bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
 
     # checks if bet is a whole number
-    while bet.isnumeric() == False:
-        bet = input(f"You currently have {user_money}. Please place your bet:")
+    while str(float(bet))[-1] != "0":
+        bet = int(input(f"You currently have {user_money}. Please place your bet:"))
     
-    
+
     draw_two_cards()
 
     if user_score == 21:
@@ -93,7 +93,8 @@ def dealer_show():
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
-    print("Drawing cards...")
+    if dealer_score >= 17:
+        print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
     print(f"Your hand: {user_hand}")
