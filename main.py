@@ -97,8 +97,8 @@ def dealer_show():
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
     sleep(2)
-    print(f"Dealer hand: {dealer_hand}")
     print(f"Your hand: {user_hand}")
+    print(f"Dealer hand: {dealer_hand}")
 
     # dealer bust
     if dealer_score > 21:
@@ -130,9 +130,6 @@ def hit_stand():
 
     hit_stand = input("Hit or stand?").lower().strip()
 
-    """while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
-        hit_stand = input("Hit or stand?")"""
-
     while hit_stand == "hit":
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
@@ -142,8 +139,8 @@ def hit_stand():
             hit_stand = "stand"
             break
     
-        hit_stand = input("Hit or stand?")
         print(f"Your hand: {user_hand}")
+        hit_stand = input("Hit or stand?")
 
     dealer_show()
 
