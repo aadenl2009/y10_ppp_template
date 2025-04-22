@@ -56,10 +56,6 @@ def game_start():
     global user_money
 
     bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
-
-    # checks if bet is a whole number
-    while str(float(bet))[-1] != "0":
-        bet = int(input(f"You currently have {user_money}. Please place your bet:"))
     
     while bet > user_money:
         bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
@@ -104,24 +100,32 @@ def dealer_show():
     if dealer_score > 21:
         print("Dealer bust! Congratulations, you win!")
         user_money += bet
-        print(f"You now have {user_money}.")
+        play_again = input((f"You now have {user_money}. Play again? (y/n)"))
+        if play_again.lower() == "y":
+            game_start()
 
     # dealer higher than user
     if dealer_score > user_score and dealer_score <= 21:
         print("Dealer wins! Better luck next time.")
         user_money -= bet
-        print(f"You now have {user_money}.")
+        play_again = input((f"You now have {user_money}. Play again? (y/n)"))
+        if play_again.lower() == "y":
+            game_start()
     
     # user higher than dealer
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
         user_money += bet
-        print(f"You now have {user_money}.")
+        play_again = input((f"You now have {user_money}. Play again? (y/n)"))
+        if play_again.lower() == "y":
+            game_start()
 
     # push
     elif dealer_score == user_score and dealer_score <= 21:
         print("Push!")
-        print(f"You now have {user_money}.")
+        play_again = input((f"You now have {user_money}. Play again? (y/n)"))
+        if play_again.lower() == "y":
+            game_start()
 
 def hit_stand():
 
