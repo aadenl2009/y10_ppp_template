@@ -89,11 +89,13 @@ def dealer_show():
     global bet
 
     print(f"Dealer hand: {dealer_hand}")
+
+    if dealer_score < 17:
+        print("Drawing cards...")
+        
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
-    if dealer_score < 17:
-        print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
     print(f"Your hand: {user_hand}")
