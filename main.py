@@ -92,7 +92,7 @@ def dealer_show():
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
-    if dealer_score >= 17:
+    if dealer_score < 17:
         print("Drawing cards...")
     sleep(2)
     print(f"Dealer hand: {dealer_hand}")
