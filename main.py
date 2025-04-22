@@ -92,7 +92,7 @@ def dealer_show():
 
     if dealer_score < 17:
         print("Drawing cards...")
-        
+
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
@@ -130,8 +130,8 @@ def hit_stand():
 
     hit_stand = input("Hit or stand?").lower().strip()
 
-    while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
-        hit_stand = input("Hit or stand?")
+    """while hit_stand != "hit" and hit_stand != "stand" and user_score < 21:
+        hit_stand = input("Hit or stand?")"""
 
     while hit_stand == "hit":
         user_hand = draw_card(user_hand)
