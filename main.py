@@ -1,6 +1,5 @@
-import math
+import os
 from random import randint
-from time import wait
 
 print("Welcome to BlackJack!")
 
@@ -107,8 +106,8 @@ def dealer_show():
         dealer_score = calculate_score(dealer_hand)
         if "ace" in dealer_hand and dealer_score <= 10:
             dealer_score += 10
-
-    wait(2)
+    
+    os.wait(2)
     print(f"Your hand: {user_hand}")
     print(f"Dealer hand: {dealer_hand}")
 
