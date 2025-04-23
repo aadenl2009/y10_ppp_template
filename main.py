@@ -128,6 +128,12 @@ def dealer_show():
         user_money += bet
         play_again()
 
+    # user bust
+    if user_score > 21:
+        print("You bust! Congratulations, you win!")
+        user_money -= bet
+        play_again()
+
     # push
     elif dealer_score == user_score and dealer_score <= 21:
         print("Push!")
