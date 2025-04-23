@@ -66,6 +66,8 @@ def game_start():
     draw_two_cards()
 
     # blackjack
+
+    print(user_score)
     if "ace" in user_hand and user_score == 10:
         user_score += 10
     
@@ -74,7 +76,7 @@ def game_start():
 
     if user_score == 21:
         print("BlackJack! You win!")
-        user_money += (bet * 1.5).ceil()
+        user_money += (bet * 1.5)
         play_again()
     if dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!")
@@ -103,7 +105,7 @@ def dealer_show():
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
-        if "ace" in dealer_hand and dealer_hand < 10:
+        if "ace" in dealer_hand and dealer_score <= 10:
             dealer_score += 10
 
     sleep(2)
@@ -130,7 +132,7 @@ def dealer_show():
 
     # user bust
     if user_score > 21:
-        print("You bust! Congratulations, you win!")
+        print("You bust! Better luck next time!")
         user_money -= bet
         play_again()
 
@@ -148,19 +150,18 @@ def hit_stand():
 
     hit_stand = input("Hit or stand?")
 
-    if "ace" in user_hand and user_score < 10:
+    if "ace" in user_hand and user_score <= 10:
             user_score += 10
 
     while hit_stand == "hit":
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-    
         print(f"Your hand: {user_hand}")
+
         if user_score >= 21:
             break
-        hit_stand = input("Hit or stand?")
-        
 
+        hit_stand = input("Hit or stand?")
     dealer_show()
 
 def play_again():
