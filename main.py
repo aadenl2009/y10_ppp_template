@@ -46,12 +46,12 @@ def draw_card(hand):
 
 def game_start():
 
-    global bet
+    """global bet
     global user_money
     global user_hand
     global user_score
     global dealer_hand
-    global dealer_score
+    global dealer_score"""
 
     user_hand = []
     user_score = 0
