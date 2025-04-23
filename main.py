@@ -151,6 +151,8 @@ def hit_stand():
     
         print(f"Your hand: {user_hand}")
         hit_stand = input("Hit or stand?")
+        if user_score >= 21:
+            break
 
     dealer_show()
 
