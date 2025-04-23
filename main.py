@@ -100,7 +100,7 @@ def dealer_show():
     if dealer_score < 17:
         print(f"Dealer hand: {dealer_hand}")
         print("Drawing cards...")
-    else:
+    elif dealer_score >= 17 and user_score >= 21:
         print("Showing dealer card...")
 
     while dealer_score < 17:
