@@ -67,12 +67,13 @@ def game_start():
 
     # blackjack
 
-    print(user_score)
     if "ace" in user_hand and user_score == 10:
-        user_score += 10
+        user_score += 11
     
     if "ace" in dealer_hand and dealer_score == 10:
-        dealer_score += 10
+        dealer_score += 11
+
+    print(user_score)
 
     if user_score == 21:
         print("BlackJack! You win!")
