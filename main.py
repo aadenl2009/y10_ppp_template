@@ -176,9 +176,8 @@ def split():
         if split == "y":
             for i in range(2):
                 new_hand = draw_card(user_hand[:1])
-            new_score = calculate_score(user_hand[:1])
-            for i in range(2):
                 new_hand_2 = draw_card(user_hand[1:])
+            new_score = calculate_score(user_hand[:1])       
             new_score_2 = calculate_score(user_hand[:1])
 
 def game_outcome():
