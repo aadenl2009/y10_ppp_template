@@ -1,4 +1,3 @@
-import math
 from random import randint
 from time import sleep
 
@@ -175,6 +174,5 @@ def game_outcome(outcome):
     else:
         user_money += bet
     
-    return 
 
 game_start()
