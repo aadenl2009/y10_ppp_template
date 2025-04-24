@@ -139,9 +139,10 @@ def play_again():
         game_start()
 
 def double_down():
-    
-    double_choice = False
 
+    global user_hand
+
+    double_choice = False
     double_down = input("Double down? (y/n)").strip().lower()
 
     if double_down == "y":
