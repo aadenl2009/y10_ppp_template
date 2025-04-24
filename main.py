@@ -93,9 +93,8 @@ def dealer_show():
     global bet
 
     if dealer_score < 17:
-        print(f"Dealer hand: {dealer_hand}")
         print("Drawing cards...")
-    elif dealer_score >= 17 and user_score >= 21:
+    elif dealer_score >= 17 and user_score <= 21:
         print("Showing dealer card...")
 
     while dealer_score < 17:
@@ -129,7 +128,7 @@ def hit_stand():
             break
 
         hit_stand = input("Hit or stand?")
-        
+
     dealer_show()
 
 def play_again():
