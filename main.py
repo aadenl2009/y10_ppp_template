@@ -185,6 +185,7 @@ def split():
 
             print(f"Hand 1: {new_hand}")
             print(f"Hand 2: {new_hand_2}")
+            
 
 def game_outcome():
 
