@@ -180,6 +180,8 @@ def split():
             new_score = calculate_score(user_hand[:1])       
             new_score_2 = calculate_score(user_hand[:1])
 
+    hit_stand()
+
 def game_outcome():
 
     global user_money
