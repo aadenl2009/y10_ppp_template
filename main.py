@@ -25,8 +25,10 @@ def calculate_score(cards):
         # check if it is an integer
         if isinstance(card, int):
             total += card
-        else:
+        elif isinstance(card, str) and card != "ace":
             total += 10
+        elif card == "ace" and total <= 10:
+            total += 11
     return total
 
 def draw_card(hand):
@@ -65,22 +67,16 @@ def game_start():
 
     draw_two_cards()
 
-    # blackjack
-
-    if "ace" in user_hand and user_score == 10:
-        user_score += 11
-    
-    if "ace" in dealer_hand and dealer_score == 10:
-        dealer_score += 11
-
-    print(user_score)
-
     if user_score == 21:
         print("BlackJack! You win!")
-        user_money += (bet * 1.5)
+        print(f"Your hand: {user_hand}")
+        print(f"Dealer's hand: {dealer_hand}")
+        user_money += (bet * 1.5).ceil()
         play_again()
     if dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!")
+        print(f"Your hand: {user_hand}")
+        print(f"Dealer's hand: {dealer_hand}")
         user_money -= bet
         play_again()
     else:
@@ -113,34 +109,7 @@ def dealer_show():
     print(f"Your hand: {user_hand}")
     print(f"Dealer hand: {dealer_hand}")
 
-    # dealer bust
-    if dealer_score > 21:
-        print("Dealer bust! Congratulations, you win!")
-        user_money += bet
-        play_again()
-
-    # dealer higher than user
-    if dealer_score > user_score and dealer_score <= 21:
-        print("Dealer wins! Better luck next time.")
-        user_money -= bet
-        play_again()
-
-    # user higher than dealer
-    elif dealer_score < user_score and user_score <= 21:
-        print("You win! Nice job!")
-        user_money += bet
-        play_again()
-
-    # user bust
-    if user_score > 21:
-        print("You bust! Better luck next time!")
-        user_money -= bet
-        play_again()
-
-    # push
-    elif dealer_score == user_score and dealer_score <= 21:
-        print("Push!")
-        play_again()
+    game_outcome(False)
 
 def hit_stand():
 
@@ -169,5 +138,41 @@ def play_again():
     play = input((f"You now have {user_money}. Play again? (y/n)"))
     if play.lower() == "y":
         game_start()
+
+def game_outcome(outcome):
+
+    global user_money
+    global user_score
+    global dealer_score
+    global bet
+
+    # user bust
+    if user_score > 21:
+        print("You bust! Better luck next time!")
+        outcome = False
+
+    # dealer bust
+    elif dealer_score > 21:
+        print("Dealer bust! Congratulations, you win!")
+        outcome = True
+    
+    # dealer higher than user
+    elif dealer_score > user_score:
+        print("Dealer wins! Better luck next time.")
+        outcome = False
+
+    # user higher than dealer
+    elif dealer_score < user_score and user_score <= 21:
+        print("You win! Nice job!")
+        outcome = True
+    
+    if outcome == False:
+        # push
+        if dealer_score == user_score and dealer_score <= 21:
+            print("Push!")
+        else:
+            user_money -= bet
+    else:
+        user_money += bet
 
 game_start()
