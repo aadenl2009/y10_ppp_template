@@ -70,7 +70,7 @@ def game_start():
         print("BlackJack! You win!")
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: {dealer_hand}")
-        user_money += (bet * 1.5).ceil()
+        user_money += (bet * 1.5)
         play_again()
 
     if dealer_score == 21 and user_score < 21:
@@ -84,8 +84,11 @@ def game_start():
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
     
+    split()
+
     if bet * 2 <= user_money:
         double_down()
+    
     hit_stand()
 
 def dealer_show():
@@ -180,7 +183,8 @@ def split():
             new_score = calculate_score(user_hand[:1])       
             new_score_2 = calculate_score(user_hand[:1])
 
-    hit_stand()
+            print(f"Hand 1: {new_hand}")
+            print(f"Hand 2: {new_hand_2}")
 
 def game_outcome():
 
