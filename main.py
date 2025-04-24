@@ -82,7 +82,8 @@ def game_start():
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
     
-    double_down()
+    if bet * 2 <= user_money:
+        double_down()
     hit_stand()
 
 def dealer_show():
@@ -141,12 +142,15 @@ def play_again():
 def double_down():
 
     global user_hand
+    global bet
+    global user_money
 
     double_choice = False
     double_down = input("Double down? (y/n)").strip().lower()
 
     if double_down == "y":
         double_choice = True
+        bet *= 2
         user_hand = draw_card(user_hand)
         dealer_show()
     
