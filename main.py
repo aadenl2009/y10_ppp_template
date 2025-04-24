@@ -139,12 +139,16 @@ def play_again():
 
 def double_down(double_choice):
     
+    double_choice = False
+
     double_down = input("Double down? (y/n)").strip().lower()
 
     if double_down == "y":
         double_choice = True
-        draw_two_cards()
-        
+        draw_card(user_hand)
+        dealer_show()
+    
+    return double_choice
 
 
 def game_outcome():
