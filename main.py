@@ -108,7 +108,8 @@ def dealer_show():
     print(f"Your hand: {user_hand}")
     print(f"Dealer hand: {dealer_hand}")
 
-    game_outcome(False)
+    game_outcome()
+    play_again()
 
 def hit_stand():
 
@@ -138,27 +139,27 @@ def play_again():
     if play.lower() == "y":
         game_start()
 
-def game_outcome(outcome):
+def game_outcome():
 
     global user_money
     global user_score
     global dealer_score
     global bet
 
+    outcome = False
+
     # user bust
     if user_score > 21:
         print("You bust! Better luck next time!")
-        outcome = False
+
+    # dealer higher than user
+    elif dealer_score > user_score:
+        print("Dealer wins! Better luck next time.")
 
     # dealer bust
     elif dealer_score > 21:
         print("Dealer bust! Congratulations, you win!")
         outcome = True
-    
-    # dealer higher than user
-    elif dealer_score > user_score:
-        print("Dealer wins! Better luck next time.")
-        outcome = False
 
     # user higher than dealer
     elif dealer_score < user_score and user_score <= 21:
