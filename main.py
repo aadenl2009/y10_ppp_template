@@ -174,6 +174,5 @@ def game_outcome():
             user_money -= bet
     else:
         user_money += bet
-    
 
 game_start()
