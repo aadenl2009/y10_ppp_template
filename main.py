@@ -151,7 +151,6 @@ def double_down():
     global user_hand
     global bet
     global user_money
-    global user_score
 
     double_choice = False
     double_down = input("Double down? (y/n)").strip().lower()
@@ -160,7 +159,7 @@ def double_down():
         double_choice = True
         bet *= 2
         user_hand = draw_card(user_hand)
-        user_score = calculate_score(user_score)
+        user_score = calculate_score(user_hand)
         dealer_show()
     
     return double_choice
