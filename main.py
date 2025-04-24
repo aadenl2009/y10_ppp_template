@@ -164,6 +164,13 @@ def double_down():
     
     return double_choice
 
+def split():
+
+    split_choice = False
+
+    if user_hand[0] == user_hand [1]:
+        split = input("Split? (y/n)")
+
 def game_outcome():
 
     global user_money
