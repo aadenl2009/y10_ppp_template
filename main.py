@@ -178,13 +178,16 @@ def split():
         split = input("Split? (y/n)").lower().strip()
         if split == "y":
             for i in range(2):
-                new_hand = draw_card(user_hand[:1])
-                new_hand_2 = draw_card(user_hand[1:])
-            new_score = calculate_score(user_hand[:1])       
-            new_score_2 = calculate_score(user_hand[:1])
+                user_hand = draw_card(user_hand[:1])
+                user_hand_2 = draw_card(user_hand[1:])
+            user_score = calculate_score(user_hand[:1])       
+            user_score_2 = calculate_score(user_hand[:1])
 
-            print(f"Hand 1: {new_hand}")
-            print(f"Hand 2: {new_hand_2}")
+            print(f"Hand 1: {user_hand}")
+
+            hit_stand()
+
+            print(f"Hand 2: {user_hand_2}")
             
 
 def game_outcome():
