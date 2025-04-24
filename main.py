@@ -167,15 +167,18 @@ def double_down():
 
 def split():
 
+    global user_hand
+
     split_choice = False
 
     if user_hand[0] == user_hand [1]:
         split = input("Split? (y/n)").lower().strip()
         if split == "y":
-            new_hand = user_hand[:1]
-            new_score = 0
-            new_hand_2 = user_hand[1:]
-            new_score_2 = 0
+            new_hand = draw_card(user_hand[:1])
+            new_score = calculate_score(user_hand[:1])
+
+            new_hand_2 = draw_card(user_hand[1:])
+            new_score_2 = calculate_score(user_hand[:1])
 
 def game_outcome():
 
