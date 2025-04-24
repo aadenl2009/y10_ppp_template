@@ -174,12 +174,8 @@ def split():
     if user_hand[0] == user_hand [1]:
         split = input("Split? (y/n)").lower().strip()
         if split == "y":
-            for i in range(2):
-                new_hand = draw_card(user_hand[:1])
-                new_hand_2 = draw_card(user_hand[1:])
-            new_score = calculate_score(user_hand[:1])       
-            new_score_2 = calculate_score(user_hand[:1])
-
+            play_again()
+            pl
 def game_outcome():
 
     global user_money
