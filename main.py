@@ -72,12 +72,14 @@ def game_start():
         print(f"Dealer's hand: {dealer_hand}")
         user_money += (bet * 1.5).ceil()
         play_again()
+
     if dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!")
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: {dealer_hand}")
         user_money -= bet
         play_again()
+        
     else:
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
