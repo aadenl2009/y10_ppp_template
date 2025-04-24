@@ -137,6 +137,16 @@ def play_again():
     if play.lower() == "y":
         game_start()
 
+def double_down(double_choice):
+    
+    double_down = input("Double down? (y/n)").strip().lower()
+
+    if double_down == "y":
+        double_choice = True
+        draw_two_cards()
+        
+
+
 def game_outcome():
 
     global user_money
