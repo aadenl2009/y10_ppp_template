@@ -137,9 +137,14 @@ def hit_stand():
 
 def play_again():
 
-    play = input((f"You now have {user_money}. Play again? (y/n)"))
-    if play.lower() == "y":
-        game_start()
+    global user_money
+
+    if user_money > 0:
+        play = input((f"You now have {user_money}. Play again? (y/n)"))
+        if play.lower() == "y":
+            game_start()
+    else:
+        print("Game over!")
 
 def double_down():
 
