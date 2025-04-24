@@ -146,11 +146,10 @@ def double_down():
 
     if double_down == "y":
         double_choice = True
-        draw_card(user_hand)
+        user_hand = draw_card(user_hand)
         dealer_show()
     
     return double_choice
-
 
 def game_outcome():
 
