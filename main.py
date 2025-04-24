@@ -82,6 +82,7 @@ def game_start():
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
     
+    double_down()
     hit_stand()
 
 def dealer_show():
@@ -137,7 +138,7 @@ def play_again():
     if play.lower() == "y":
         game_start()
 
-def double_down(double_choice):
+def double_down():
     
     double_choice = False
 
