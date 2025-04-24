@@ -120,9 +120,6 @@ def hit_stand():
 
     hit_stand = input("Hit or stand?")
 
-    if "ace" in user_hand and user_score <= 10:
-            user_score += 10
-
     while hit_stand == "hit":
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
@@ -132,9 +129,11 @@ def hit_stand():
             break
 
         hit_stand = input("Hit or stand?")
+        
     dealer_show()
 
 def play_again():
+
     play = input((f"You now have {user_money}. Play again? (y/n)"))
     if play.lower() == "y":
         game_start()
