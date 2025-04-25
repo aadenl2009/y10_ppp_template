@@ -4,6 +4,7 @@ from time import sleep
 print("Welcome to BlackJack!")
 
 user_money = 1000
+hand_2 = False
 
 def draw_two_cards():
 
@@ -171,12 +172,12 @@ def double_down():
 def split():
 
     global user_hand
-
-    split_choice = False
+    global user_score
+    global hand_2
 
     if user_hand[0] == user_hand [1]:
-        split = input("Split? (y/n)").lower().strip()
-        if split == "y":
+        split_choice = input("Split? (y/n)").lower().strip()
+        if split_choice == "y":
             for i in range(2):
                 user_hand = draw_card(user_hand[:1])
                 user_hand_2 = draw_card(user_hand[1:])
@@ -184,11 +185,11 @@ def split():
             user_score_2 = calculate_score(user_hand[:1])
 
             print(f"Hand 1: {user_hand}")
-
+            hand_2 = True
             hit_stand()
 
             print(f"Hand 2: {user_hand_2}")
-            
+            hit_stand()
 
 def game_outcome():
 
