@@ -29,8 +29,9 @@ def calculate_score(cards):
             total += 10
         elif card == "ace" and total <= 10:
             total += 11
-        elif card == "ace" and total > 10:
-            total += 1
+    
+    if "ace" in cards and total > 10:
+        total -= 10
     return total
 
 def draw_card(hand):
