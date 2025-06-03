@@ -199,7 +199,7 @@ def split():
             print(f"Hand 1: {user_hand}")
             hit_stand()
             
-    elif hand_2 == True:        
+    elif user_hand_2[0] == user_hand_2[1] and hand_2 == True:        
         print(f"Hand 2: {user_hand_2}")
         hit_stand()
 
