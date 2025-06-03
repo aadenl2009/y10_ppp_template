@@ -46,6 +46,13 @@ def draw_card(hand):
         added.append(num)
     return added
 
+def ace(user_score):
+
+    if user_score > 10:
+        return 1
+    else:
+        return 11
+
 def game_start():
 
     global bet
