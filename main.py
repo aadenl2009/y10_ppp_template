@@ -184,7 +184,7 @@ def split():
     global user_score
     global hand_2
 
-    user_hand_2 = []
+    user_hand_2 = user_hand[:1]
     user_score_2 = 0
 
     if user_hand[0] == user_hand [1] and hand_2 == False:
@@ -192,9 +192,9 @@ def split():
         if split_choice == "y":
             for i in range(2):
                 user_hand = draw_card(user_hand[:1])
-                user_hand_2 = draw_card(user_hand[1:])
+                user_hand_2 = draw_card(user_hand_2)
             user_score = calculate_score(user_hand[:1])       
-            user_score_2 = calculate_score(user_hand[:1])
+            user_score_2 = calculate_score(user_hand_2)
 
             print(f"Hand 1: {user_hand}")
             hit_stand()
