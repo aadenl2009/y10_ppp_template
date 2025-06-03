@@ -182,6 +182,8 @@ def split():
 
     global user_hand
     global user_score
+    global user_hand_2
+    global user_score_2
     global hand_2
 
     if user_hand[0] == user_hand [1] and hand_2 == False:
