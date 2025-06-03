@@ -102,6 +102,7 @@ def dealer_show():
     global user_money
     global dealer_hand
     global bet
+    global hand_2
 
     if dealer_score < 17:
         print("Drawing cards...")
@@ -136,6 +137,7 @@ def hit_stand():
         print(f"Your hand: {user_hand}")
 
         if user_score >= 21:
+            print("You went over 21!")
             break
 
         hit_stand = input("Hit or stand?")
@@ -192,7 +194,7 @@ def split():
             print(f"Hand 1: {user_hand}")
             hand_2 = True
             hit_stand()
-
+            
             print(f"Hand 2: {user_hand_2}")
             hit_stand()
 
