@@ -27,8 +27,9 @@ def calculate_score(cards):
             total += card
         elif isinstance(card, str) and card != "ace":
             total += 10
-        elif card == "ace" and total <= 10:
-            total += 11
+        elif card == "ace":
+            total += ace(user_score)
+
     return total
 
 def draw_card(hand):
