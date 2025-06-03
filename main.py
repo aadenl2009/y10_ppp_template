@@ -120,8 +120,6 @@ def dealer_show():
     print(f"Dealer hand: {dealer_hand}")
 
     game_outcome()
-    hand_2 = True
-    split()
     play_again()
 
 def hit_stand():
@@ -184,24 +182,21 @@ def split():
     global user_score
     global hand_2
 
-    user_hand_2 = user_hand[:1]
-    user_score_2 = 0
-
-    if user_hand[0] == user_hand [1] and hand_2 == False:
+    if user_hand[0] == user_hand [1]:
         split_choice = input("Split? (y/n)").lower().strip()
         if split_choice == "y":
             for i in range(2):
                 user_hand = draw_card(user_hand[:1])
-                user_hand_2 = draw_card(user_hand_2)
+                user_hand_2 = draw_card(user_hand[1:])
             user_score = calculate_score(user_hand[:1])       
-            user_score_2 = calculate_score(user_hand_2)
+            user_score_2 = calculate_score(user_hand[:1])
 
             print(f"Hand 1: {user_hand}")
+            hand_2 = True
             hit_stand()
             
-    elif user_hand_2[0] == user_hand[1] and hand_2 == True:        
-        print(f"Hand 2: {user_hand_2}")
-        hit_stand()
+            print(f"Hand 2: {user_hand_2}")
+            hit_stand()
 
 def game_outcome():
 
