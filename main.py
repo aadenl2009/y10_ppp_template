@@ -27,9 +27,10 @@ def calculate_score(cards):
             total += card
         elif isinstance(card, str) and card != "ace":
             total += 10
-        elif card == "ace":
-            total += ace(user_score)
-
+        elif card == "ace" and total <= 10:
+            total += 11
+        elif card == "ace" and total > 10:
+            total += 1
     return total
 
 def draw_card(hand):
@@ -46,13 +47,6 @@ def draw_card(hand):
     else:
         added.append(num)
     return added
-
-def ace(user_score):
-
-    if user_score > 10:
-        return 1
-    else:
-        return 11
 
 def game_start():
 
