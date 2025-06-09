@@ -211,10 +211,6 @@ def game_outcome():
     if user_score > 21:
         print("You bust! Better luck next time!")
 
-    # dealer higher than user
-    elif dealer_score > user_score:
-        print("Dealer wins! Better luck next time.")
-
     # dealer bust
     elif dealer_score > 21:
         print("Dealer bust! Congratulations, you win!")
@@ -224,6 +220,10 @@ def game_outcome():
     elif dealer_score < user_score and user_score <= 21:
         print("You win! Nice job!")
         outcome = True
+    
+    # dealer higher than user
+    elif dealer_score > user_score:
+        print("Dealer wins! Better luck next time.")
     
     if outcome == False:
         # push
