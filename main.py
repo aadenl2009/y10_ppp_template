@@ -4,7 +4,6 @@ from time import sleep
 print("Welcome to BlackJack!")
 
 user_money = 1000
-hand_2 = False
 
 def draw_two_cards():
 
@@ -93,7 +92,7 @@ def game_start():
     if bet * 2 <= user_money:
         double_down()
     
-    hit_stand()
+    hit_stand(user_hand, user_score)
 
 def dealer_show():
 
@@ -102,7 +101,6 @@ def dealer_show():
     global user_money
     global dealer_hand
     global bet
-    global hand_2
 
     if dealer_score < 17:
         print("Drawing cards...")
@@ -122,24 +120,22 @@ def dealer_show():
     game_outcome()
     play_again()
 
-def hit_stand():
+def hit_stand(hand, score):
 
     global bet
-    global user_hand
-    global user_score
     global user_money
 
     hit_stand = input("Hit or stand?")
 
     while hit_stand == "hit":
-        user_hand = draw_card(user_hand)
-        user_score = calculate_score(user_hand)
-        print(f"Your hand: {user_hand}")
+        hand = draw_card(hand)
+        score = calculate_score(hand)
+        print(f"Your hand: {hand}")
 
-        if user_score >= 21:
+        if score >= 21:
             print("You went over 21!")
             break
-        elif dealer_score >= 21:
+        elif score >= 21:
             break
 
         hit_stand = input("Hit or stand?")
@@ -182,7 +178,6 @@ def split():
 
     global user_hand
     global user_score
-    global hand_2
 
     if user_hand[0] == user_hand [1]:
         split_choice = input("Split? (y/n)").lower().strip()
@@ -193,11 +188,10 @@ def split():
             user_score = calculate_score(user_hand[:1])       
             user_score_2 = calculate_score(user_hand_2)
             print(f"Hand 1: {user_hand}")
-            hand_2 = True
-            hit_stand()
+            hit_stand(user_hand, user_score)
             
             print(f"Hand 2: {user_hand_2}")
-            hit_stand()
+            hit_stand(user_hand, user_score)
 
 def game_outcome():
 
