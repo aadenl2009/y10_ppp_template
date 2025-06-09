@@ -30,7 +30,7 @@ def calculate_score(cards):
         elif card == "ace" and total <= 10:
             total += 11
     
-    if "ace" in cards and total > 10:
+    if "ace" in cards and total > 21:
         total -= 10
     return total
 
