@@ -139,6 +139,8 @@ def hit_stand():
         if user_score >= 21:
             print("You went over 21!")
             break
+        elif dealer_score >= 21:
+            break
 
         hit_stand = input("Hit or stand?")
 
