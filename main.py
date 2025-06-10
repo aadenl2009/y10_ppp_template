@@ -196,7 +196,7 @@ def split():
             for i in range(2):
                 user_hand = draw_card(user_hand[:1])
                 user_hand_2 = draw_card(user_hand[1:])
-            user_score = calculate_score(user_hand[:1])       
+            user_score = calculate_score(user_hand)       
             user_score_2 = calculate_score(user_hand_2)
             print(f"Hand 1: {user_hand}")
             hand_2 = True
