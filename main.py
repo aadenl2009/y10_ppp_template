@@ -187,8 +187,10 @@ def split():
     global hand_2
     global user_hand_2
     global user_score_2
+    global bet
+    global user_money
 
-    if user_hand[0] == user_hand [1] and hand_2 == False:
+    if user_hand[0] == user_hand [1] and hand_2 == False and bet * 2 >= user_money:
         split_choice = input("Split? (y/n)").lower().strip()
         if split_choice == "y" and hand_2 == False:
             for i in range(2):
