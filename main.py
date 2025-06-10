@@ -112,8 +112,6 @@ def dealer_show():
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
-        if "ace" in dealer_hand and dealer_score <= 10:
-            dealer_score += 10
 
     sleep(2)
     print(f"Your hand: {user_hand}")
