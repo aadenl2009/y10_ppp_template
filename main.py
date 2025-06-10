@@ -199,6 +199,7 @@ def split():
             hit_stand(user_hand, user_score)
     if hand_2 == True:
         print(f"Hand 2: {user_hand_2}")
+        hand_2 = False
         hit_stand(user_hand_2, user_score_2)
 
 def game_outcome():
