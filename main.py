@@ -159,6 +159,7 @@ def play_again():
             print("Thanks for playing!")
     else:
         print("Game over!")
+    quit()
 
 def double_down():
 
