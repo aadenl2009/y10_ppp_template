@@ -100,10 +100,9 @@ def game_start():
     
     hit_stand(user_hand, user_score)
 
-def dealer_show():
+def dealer_show(hand, score):
 
     global dealer_score
-    global user_score
     global user_money
     global dealer_hand
     global bet
@@ -111,7 +110,7 @@ def dealer_show():
 
     if dealer_score < 17:
         print("Drawing cards...")
-    elif dealer_score >= 17 and user_score <= 21:
+    elif dealer_score >= 17 and score <= 21:
         print("Showing dealer card...")
 
     while dealer_score < 17:
@@ -119,7 +118,7 @@ def dealer_show():
         dealer_score = calculate_score(dealer_hand)
 
     sleep(2)
-    print(f"Your hand: {user_hand}")
+    print(f"Your hand: {hand}")
     print(f"Dealer hand: {dealer_hand}")
 
     game_outcome()
@@ -146,7 +145,7 @@ def hit_stand(hand, score):
             break
 
         hit_stand = input("Hit or stand?")
-    dealer_show()
+    dealer_show(hand, score)
 
 def play_again():
 
