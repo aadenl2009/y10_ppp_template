@@ -5,6 +5,8 @@ print("Welcome to BlackJack!")
 
 user_money = 1000
 hand_2 = False
+user_hand_2 = 0
+user_score_2 = 0
 
 def draw_two_cards():
 
@@ -180,9 +182,6 @@ def split():
     global user_hand
     global user_score
     global hand_2
-
-    user_hand_2 = []
-    user_score_2 = 0
 
     if user_hand[0] == user_hand [1] and hand_2 == False:
         split_choice = input("Split? (y/n)").lower().strip()
