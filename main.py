@@ -136,10 +136,10 @@ def hit_stand(hand, score):
         score = calculate_score(hand)
         print(f"Your hand: {hand}")
 
-        if score >= 21:
+        if score >= 21 and "ace" not in hand:
             print("You went over 21!")
             break
-        elif score >= 21:
+        elif score <= 21:
             break
 
         hit_stand = input("Hit or stand?")
