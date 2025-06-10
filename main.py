@@ -185,6 +185,9 @@ def split():
     global user_score
     global hand_2
 
+    user_hand_2 = []
+    user_score_2 = 0
+
     if user_hand[0] == user_hand [1] and hand_2 == False:
         split_choice = input("Split? (y/n)").lower().strip()
         if split_choice == "y" and hand_2 == False:
@@ -196,9 +199,9 @@ def split():
             print(f"Hand 1: {user_hand}")
             hand_2 = True
             hit_stand(user_hand, user_score)
-            
-    print(f"Hand 2: {user_hand_2}")
-    hit_stand(user_hand_2, user_score_2)
+    if hand_2 == True:
+        print(f"Hand 2: {user_hand_2}")
+        hit_stand(user_hand_2, user_score_2)
 
 def game_outcome():
 
