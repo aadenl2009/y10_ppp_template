@@ -191,7 +191,7 @@ def split():
             hit_stand(user_hand, user_score)
             
             print(f"Hand 2: {user_hand_2}")
-            hit_stand(user_hand, user_score)
+            hit_stand(user_hand_2, user_score_2)
 
 def game_outcome():
 
