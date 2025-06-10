@@ -175,7 +175,7 @@ def double_down():
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-        dealer_show()
+        dealer_show(user_hand, user_score)
     
     return double_choice
 
