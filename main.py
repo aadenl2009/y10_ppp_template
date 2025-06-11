@@ -4,6 +4,14 @@ from time import sleep
 print("Welcome to BlackJack!")
 
 user_money = 1000
+user_hand = []
+user_score = 0
+dealer_hand = []
+dealer_score = 0
+user_hand_2 = 0
+user_score_2 = 0
+hand_2 = False
+bet = 0
 
 def draw_two_cards():
 
@@ -50,26 +58,7 @@ def draw_card(hand):
         added.append(num)
     return added
 
-def game_start():
-
-    global bet
-    global user_money
-    global user_hand
-    global user_score
-    global dealer_hand
-    global dealer_score
-    global user_hand_2
-    global user_score_2
-    global hand_2
-
-    user_hand = []
-    user_score = 0
-    dealer_hand = []
-    dealer_score = 0
-    user_hand_2 = 0
-    user_score_2 = 0
-    hand_2 = False
-    bet = 0
+def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, user_score_2, hand_2):
 
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
     
@@ -261,4 +250,4 @@ def game_outcome():
     else:
         user_money += bet
 
-game_start()
+game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, user_score_2, hand_2)
