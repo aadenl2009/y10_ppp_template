@@ -13,12 +13,12 @@ user_score_2 = 0
 hand_2 = False
 bet = 0
 
-def draw_two_cards():
+def draw_two_cards(user_score, dealer_score, user_hand, dealer_hand):
 
-    global user_score
-    global dealer_score
-    global user_hand
-    global dealer_hand
+    user_score = 0
+    dealer_score = 0
+    user_hand = []
+    dealer_hand = []
 
     for i in range(2):
         user_hand = draw_card(user_hand)
@@ -59,7 +59,11 @@ def draw_card(hand):
     return added
 
 def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score):
-
+    bet = 0
+    user_hand = []
+    user_score = 0
+    dealer_hand = []
+    dealer_score = 0
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
     
     while not bet.isnumeric() or int(bet) > user_money:
@@ -67,7 +71,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
 
     bet = int(bet)
         
-    draw_two_cards()
+    draw_two_cards(user_score, dealer_score, user_hand, dealer_hand)
 
     if user_score == 21:
         print("BlackJack! You win!")
