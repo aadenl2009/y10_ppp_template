@@ -74,7 +74,7 @@ def game_start():
     
     while not bet.isnumeric():
         bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
-        while bet > user_money:
+        while int(bet) > user_money:
             bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
 
     bet = int(bet)
