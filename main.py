@@ -84,7 +84,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
     
-    split()
+    split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if bet * 2 <= user_money:
         double_down()
@@ -101,7 +101,7 @@ def dealer_show(hand, score):
     global hand_2
 
     if hand_2 == True:
-        split()
+        split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if dealer_score < 17:
         print("Drawing cards...")
@@ -182,15 +182,7 @@ def double_down():
     
     return double_choice
 
-def split():
-
-    global user_hand
-    global user_score
-    global hand_2
-    global user_hand_2
-    global user_score_2
-    global bet
-    global user_money
+def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money):
 
     if user_hand[0] == user_hand [1] and hand_2 == False and bet * 2 <= user_money:
         split_choice = input("Split? (y/n)").lower().strip()
