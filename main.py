@@ -69,16 +69,14 @@ def game_start():
     user_hand_2 = 0
     user_score_2 = 0
     hand_2 = False
+    bet = 0
 
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
     
-    while not bet.isnumeric():
+    while not bet.isnumeric() or int(bet) > user_money:
         bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
 
     bet = int(bet)
-
-    while bet > user_money:
-        bet = int(input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip())
         
     draw_two_cards()
 
