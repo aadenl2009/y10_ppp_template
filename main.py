@@ -16,7 +16,7 @@ bet = 0
 def draw_two_cards(user_score, dealer_score, user_hand, dealer_hand):
 
     for i in range(2):
-        user_hand = draw_card(user_hand)
+        u_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
