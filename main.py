@@ -28,9 +28,11 @@ def calculate_score(cards):
             total += 10
         elif card == "ace" and total <= 10:
             total += 11
+        elif card == "ace" and total > 10:
+            total += 1
     
     if "ace" in cards and total > 21:
-        total -= 10
+        total -= 10 
     return total
 
 def draw_card(hand):
@@ -68,11 +70,15 @@ def game_start():
     user_score_2 = 0
     hand_2 = False
 
-    bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
+    bet = input(f"You currently have {user_money}. Please place your bet:").strip()
     
-    while bet > user_money:
-        bet = int(input(f"You currently have {user_money}. Please place your bet:").strip())
+    while not bet.isnumeric():
+        bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
+        while bet > user_money:
+            bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
 
+    bet = int(bet)
+        
     draw_two_cards()
 
     if user_score == 21:
@@ -105,12 +111,16 @@ def dealer_show(hand, score):
     global dealer_score
     global user_money
     global dealer_hand
+    global user_hand_2
     global bet
     global hand_2
 
+    if hand_2 == True:
+        split()
+
     if dealer_score < 17:
         print("Drawing cards...")
-    elif dealer_score >= 17 and score <= 21:
+    elif dealer_score >= 17 and score <= 21 and hand_2 == False:
         print("Showing dealer card...")
 
     while dealer_score < 17:
@@ -118,13 +128,15 @@ def dealer_show(hand, score):
         dealer_score = calculate_score(dealer_hand)
 
     sleep(2)
-    print(f"Your hand: {hand}")
-    print(f"Dealer hand: {dealer_hand}")
+    if hand_2 == False:
+        print(f"Your hand: {hand}")
+        print(f"Dealer hand: {dealer_hand}")
+    else:
+        print(f"Hand 1: {hand}")
+        print(f"Hand 2: {user_hand_2}")
+        print(f"Dealer hand: {dealer_hand}")
 
     game_outcome()
-
-    if hand_2 == True:
-        split()
 
     play_again()
 
@@ -133,14 +145,16 @@ def hit_stand(hand, score):
     global bet
     global user_money
 
-    hit_stand = input("Hit or stand?")
+    hit_stand = input("Hit or stand?").lower().strip()
+    while hit_stand != "hit" and hit_stand != "stand":
+        hit_stand = input("Invalid input! Hit or stand?").lower().strip()
 
     while hit_stand == "hit":
         hand = draw_card(hand)
         score = calculate_score(hand)
         print(f"Your hand: {hand}")
 
-        if score >= 21 and "ace" not in hand:
+        if score > 21 and "ace" not in hand:
             print("You went over 21!")
             break
 
@@ -170,6 +184,9 @@ def double_down():
 
     double_choice = False
     double_down = input("Double down? (y/n)").strip().lower()
+
+    while double_down != "y" and double_down != "n":
+        double_down = input("Invalid input! Double down? (y/n)").strip().lower()
 
     if double_down == "y":
         double_choice = True
