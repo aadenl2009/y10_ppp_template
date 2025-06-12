@@ -127,9 +127,6 @@ def dealer_show(hand, score):
 
 def hit_stand(hand, score):
 
-    global bet
-    global user_money
-
     hit_stand = input("Hit or stand?").lower().strip()
     while hit_stand != "hit" and hit_stand != "stand":
         hit_stand = input("Invalid input! Hit or stand?").lower().strip()
@@ -143,7 +140,8 @@ def hit_stand(hand, score):
             print("You went over 21!")
             break
 
-        hit_stand = input("Hit or stand?")
+        hit_stand = input("Hit or stand?").lower().strip()
+
     dealer_show(hand, score)
 
 def play_again():
