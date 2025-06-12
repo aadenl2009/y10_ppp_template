@@ -84,7 +84,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]")
     
-    split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
+    user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if bet * 2 <= user_money:
         double_down()
@@ -101,7 +101,7 @@ def dealer_show(hand, score):
     global hand_2
 
     if hand_2 == True:
-        split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
+        user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if dealer_score < 17:
         print("Drawing cards...")
@@ -199,6 +199,8 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
         print(f"Hand 2: {user_hand_2}")
         hand_2 = False
         hit_stand(user_hand_2, user_score_2)
+
+    return user_hand, user_hand_2
 
 def game_outcome():
 
