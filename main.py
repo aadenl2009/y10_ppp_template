@@ -91,14 +91,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
     
     hit_stand(user_hand, user_score)
 
-def dealer_show(hand, score):
-
-    global dealer_score
-    global user_money
-    global dealer_hand
-    global user_hand_2
-    global bet
-    global hand_2
+def dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2):
 
     if hand_2 == True:
         user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
@@ -142,7 +135,7 @@ def hit_stand(hand, score):
 
         hit_stand = input("Hit or stand?").lower().strip()
 
-    dealer_show(hand, score)
+    dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2)
 
 def play_again():
 
@@ -176,7 +169,7 @@ def double_down():
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-        dealer_show(user_hand, user_score)
+        dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2)
     
     return double_choice
 
