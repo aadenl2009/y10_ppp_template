@@ -93,8 +93,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
 
 def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2):
 
-    if hand_2 == True:
-        user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
+    user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if dealer_score < 17:
         print("Drawing cards...")
