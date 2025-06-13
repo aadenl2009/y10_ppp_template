@@ -114,7 +114,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
         print(f"Hand 2: {user_hand_2}")
         print(f"Dealer hand: {dealer_hand}")
 
-    game_outcome()
+    game_outcome(user_money, user_score, dealer_score, bet)
 
     play_again(user_money)
 
@@ -184,12 +184,7 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
 
     return user_hand, user_hand_2
 
-def game_outcome():
-
-    global user_money
-    global user_score
-    global dealer_score
-    global bet
+def game_outcome(user_money, user_score, dealer_score, bet):
 
     outcome = False
 
