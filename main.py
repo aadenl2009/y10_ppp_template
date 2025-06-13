@@ -71,14 +71,14 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: {dealer_hand}")
         user_money += (bet * 1.5)
-        play_again()
+        play_again(user_money)
 
     elif dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!")
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: {dealer_hand}")
         user_money -= bet
-        play_again()
+        play_again(user_money)
 
     else:
         print(f"Your hand: {user_hand}")
@@ -91,14 +91,14 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
     
     hit_stand(user_hand, user_score)
 
-def dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2):
+def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2):
 
     if hand_2 == True:
         user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if dealer_score < 17:
         print("Drawing cards...")
-    elif dealer_score >= 17 and score <= 21 and hand_2 == False:
+    elif dealer_score >= 17 and user_score <= 21 and hand_2 == False:
         print("Showing dealer card...")
 
     while dealer_score < 17:
@@ -107,16 +107,16 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2)
 
     sleep(2)
     if hand_2 == False:
-        print(f"Your hand: {hand}")
+        print(f"Your hand: {user_hand}")
         print(f"Dealer hand: {dealer_hand}")
     else:
-        print(f"Hand 1: {hand}")
+        print(f"Hand 1: {user_hand}")
         print(f"Hand 2: {user_hand_2}")
         print(f"Dealer hand: {dealer_hand}")
 
     game_outcome()
 
-    play_again()
+    play_again(user_money)
 
 def hit_stand(hand, score):
 
@@ -135,11 +135,9 @@ def hit_stand(hand, score):
 
         hit_stand = input("Hit or stand?").lower().strip()
 
-    dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2)
+    dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2)
 
-def play_again():
-
-    global user_money
+def play_again(user_money):
 
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n)"))
@@ -169,7 +167,7 @@ def double_down():
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-        dealer_show(dealer_score, user_money, dealer_hand, user_hand_2, bet, hand_2)
+        dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2)
     
     return double_choice
 
