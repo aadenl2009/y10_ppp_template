@@ -136,6 +136,7 @@ def hit_stand(hand, score):
         hit_stand = input("Hit or stand?").lower().strip()
 
     dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2)
+    
     return hand, score
 
 def play_again(user_money):
