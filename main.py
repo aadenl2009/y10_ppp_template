@@ -24,9 +24,9 @@ def draw_two_cards(user_score, dealer_score, user_hand, dealer_hand):
 
     return user_score, dealer_score, user_hand, dealer_hand
 
-def calculate_score(cards):
+def calculate_score(hand):
     total = 0
-    for card in cards:
+    for card in hand:
         # check if it is an integer
         if isinstance(card, int):
             total += card
@@ -37,7 +37,7 @@ def calculate_score(cards):
         elif card == "ace" and total > 10:
             total += 1
     
-    if "ace" in cards and total > 21:
+    if "ace" in hand and total > 21:
         total -= 10 
     return total
 
