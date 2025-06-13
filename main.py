@@ -151,20 +151,16 @@ def play_again(user_money):
 
 def double_down(user_hand, user_score, bet, user_money):
 
-    double_choice = False
     double_down = input("Double down? (y/n)").strip().lower()
 
     while double_down != "y" and double_down != "n":
         double_down = input("Invalid input! Double down? (y/n)").strip().lower()
 
     if double_down == "y":
-        double_choice = True
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
         dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2)
-    
-        return double_choice
 
 def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money):
 
