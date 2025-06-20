@@ -72,14 +72,14 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: {dealer_hand}")
         user_money += (bet * 1.5)
-        play_again(user_money)
+        user_money = play_again(user_money)
 
     elif dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!")
         print(f"Your hand: {user_hand}")
         print(f"Dealer's hand: {dealer_hand}")
         user_money -= bet
-        play_again(user_money)
+        user_money = play_again(user_money)
 
     else:
         print(f"Your hand: {user_hand}")
@@ -116,7 +116,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 
     user_money = game_outcome(user_money, user_score, dealer_score, bet)
 
-    play_again(user_money)
+    user_money = play_again(user_money)
 
     return dealer_hand, dealer_score
 
@@ -153,6 +153,8 @@ def play_again(user_money):
     else:
         print("Game over!")
     quit()
+
+    return user_money
 
 def double_down(user_hand, user_score, bet, user_money):
 
