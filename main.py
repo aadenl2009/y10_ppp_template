@@ -1,7 +1,7 @@
 from random import randint
 from time import sleep
 
-print("Welcome to BlackJack!")
+print("Welcome to BlackJack!\n")
 
 # set var
 user_money = 1000
