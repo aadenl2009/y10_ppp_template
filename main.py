@@ -60,7 +60,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
 
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
     
-    while not bet.isnumeric() or int(bet) > user_money:
+    while not bet.isnumeric() or int(bet) > user_money or int(bet) == 0:
         bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
 
     bet = int(bet)
@@ -114,7 +114,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
         print(f"Hand 2: {user_hand_2}")
         print(f"Dealer hand: {dealer_hand}")
 
-    game_outcome(user_money, user_score, dealer_score, bet)
+    user_money = game_outcome(user_money, user_score, dealer_score, bet)
 
     play_again(user_money)
 
@@ -129,7 +129,7 @@ def hit_stand(hand, score, hand_2):
         score = calculate_score(hand)
         print(f"Your hand: {hand}")
 
-        if score > 21 and "ace" not in hand:
+        if score > 21:
             print("You went over 21!")
             break
 
@@ -192,34 +192,46 @@ def game_outcome(user_money, user_score, dealer_score, bet):
 
     outcome = False
 
-    if outcome == False:
-        # push
-        if dealer_score == user_score and dealer_score <= 21:
-            print("Push!")
-        # double bust
-        elif user_score > 21 and dealer_score > 21:
-            print("Double bust! Push!")
-        else:
-            user_money -= bet
-    else:
-        user_money += bet
-
     # user bust
-    if user_score > 21:
-        print("You bust! Better luck next time!")
+    if user_score > 21 and dealer_score > 21:
+        print("Push!")
 
-    # dealer bust
-    elif dealer_score > 21:
-        print("Dealer bust! Congratulations, you win!")
-        outcome = True
+    else:
+        if user_score > 21:
+            print("You bust! Better luck next time!")
 
-    # user higher than dealer
-    elif dealer_score < user_score and user_score <= 21:
-        print("You win! Nice job!")
-        outcome = True
+        # dealer bust
+        elif dealer_score > 21:
+            print("Dealer bust! Congratulations, you win!")
+            outcome = True
+        
+        # user higher than dealer
+        elif dealer_score < user_score and user_score <= 21:
+            print("You win! Nice job!")
+            outcome = True
+        
+        # dealer higher than user
+        elif dealer_score > user_score:
+            print("Dealer wins! Better luck next time.")
+
+        if outcome == False:
+            # push
+            if dealer_score == user_score and dealer_score <= 21:
+                print("Push!")
+            # double bust
+            elif user_score > 21 and dealer_score > 21:
+                print("Double bust! Push!")
+            else:
+                print("You lost.")
+                user_money -= bet
+        else:
+            user_money += bet
+    return user_money
+
+def main():
+
     
-    # dealer higher than user
-    elif dealer_score > user_score:
-        print("Dealer wins! Better luck next time.")
 
-game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
+    game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
+
+main()
