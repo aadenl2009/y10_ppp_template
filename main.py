@@ -89,8 +89,6 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
 
     if bet * 2 <= user_money:
         user_hand, user_score = double_down(user_hand, user_score, bet, user_money)
-    
-    user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
 
 def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score):
 
@@ -228,10 +226,9 @@ def game_outcome(user_money, user_score, dealer_score, bet):
             user_money += bet
     return user_money
 
-def main():
-
-    
+def main(user_hand, user_score):
 
     game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
+    user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
 
-main()
+main(user_hand, user_score)
