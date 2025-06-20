@@ -198,7 +198,7 @@ def game_outcome(user_money, user_score, dealer_score, bet):
     else:
         if user_score > 21:
             print("You bust! Better luck next time!")
-
+        
         # dealer bust
         elif dealer_score > 21:
             print("Dealer bust! Congratulations, you win!")
