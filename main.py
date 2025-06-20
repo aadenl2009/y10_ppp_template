@@ -145,7 +145,7 @@ def play_again(user_money):
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n)"))
         if play.lower() == "y":
-            game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
+            main()
         else:
             print("Thanks for playing!")
     else:
