@@ -55,7 +55,7 @@ def draw_card(hand):
     else:
         added.append(num)
     return added
-
+                                                                                                                                                                     
 def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2):
 
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
