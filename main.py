@@ -118,6 +118,8 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 
     play_again(user_money)
 
+    return dealer_hand, dealer_score
+
 def hit_stand(hand, score, hand_2):
 
     hit_stand = input("Hit or stand?").lower().strip()
@@ -145,7 +147,7 @@ def play_again(user_money):
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n)"))
         if play.lower() == "y":
-            main()
+            main(user_hand, user_score, dealer_hand, dealer_score)
         else:
             print("Thanks for playing!")
     else:
@@ -227,10 +229,10 @@ def game_outcome(user_money, user_score, dealer_score, bet):
             user_money += bet
     return user_money
 
-def main(user_hand, user_score):
+def main(user_hand, user_score, dealer_hand, dealer_score):
 
     user_hand, user_score = game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
-    dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
+    dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
 
-main(user_hand, user_score)
+main(user_hand, user_score, dealer_hand, dealer_score)
