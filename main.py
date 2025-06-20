@@ -133,7 +133,6 @@ def hit_stand(hand, score, hand_2):
 
         hit_stand = input("Hit or stand?").lower().strip()
 
-    dealer_show(dealer_score, user_money, dealer_hand, hand, user_hand_2, bet, hand_2, user_score)
     if hand_2 == True:
         hand = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
@@ -230,5 +229,6 @@ def main(user_hand, user_score):
 
     game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
-
+    dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
+    
 main(user_hand, user_score)
