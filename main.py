@@ -229,6 +229,7 @@ def game_outcome(user_money, user_score, dealer_score, bet):
                 user_money -= bet
         else:
             user_money += bet
+            
     return user_money
 
 def main(user_hand, user_score, dealer_hand, dealer_score, user_money):
