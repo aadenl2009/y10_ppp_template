@@ -115,8 +115,8 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
         print(f"Dealer hand: {dealer_hand}")
 
     user_money = game_outcome(user_money, user_score, dealer_score, bet)
-
-    user_money = play_again(user_money)
+    
+    play_again(user_money)
 
     return dealer_hand, dealer_score
 
@@ -153,8 +153,6 @@ def play_again(user_money):
     else:
         print("Game over!")
     quit()
-
-    return user_money
 
 def double_down(user_hand, user_score, bet, user_money):
 
@@ -229,7 +227,7 @@ def game_outcome(user_money, user_score, dealer_score, bet):
                 user_money -= bet
         else:
             user_money += bet
-            
+
     return user_money
 
 def main(user_hand, user_score, dealer_hand, dealer_score, user_money):
