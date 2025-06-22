@@ -88,7 +88,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
     user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
     if bet * 2 <= user_money:
-        user_hand, user_score = double_down(user_hand, user_score, bet, user_money)
+        user_hand, user_score = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score)
 
     return user_hand, user_score
 
@@ -154,7 +154,7 @@ def play_again(user_money):
         print("Game over!")
     quit()
 
-def double_down(user_hand, user_score, bet, user_money):
+def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score):
 
     double_down = input("Double down? (y/n)").strip().lower()
 
@@ -165,7 +165,7 @@ def double_down(user_hand, user_score, bet, user_money):
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-        dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
+        dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
 
     return user_hand, user_score
 
