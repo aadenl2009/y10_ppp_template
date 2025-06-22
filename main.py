@@ -114,8 +114,6 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
         print(f"Hand 2: {user_hand_2}")
         print(f"Dealer hand: {dealer_hand}")
 
-    user_money = game_outcome(user_money, user_score, dealer_score, bet)
-
     return dealer_hand, dealer_score
 
 def hit_stand(hand, score, hand_2):
@@ -233,6 +231,7 @@ def main(user_hand, user_score, dealer_hand, dealer_score, user_money):
     user_hand, user_score = game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
     dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
+    user_money = game_outcome(user_money, user_score, dealer_score, bet)
     play_again(user_money)
-    
+
 main(user_hand, user_score, dealer_hand, dealer_score, user_money)
