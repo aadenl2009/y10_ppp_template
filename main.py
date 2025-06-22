@@ -211,18 +211,18 @@ def game_outcome(user_money, user_score, dealer_score, bet):
         elif dealer_score > user_score:
             print("Dealer wins! Better luck next time.")
 
-        if outcome == False:
-            # push
-            if dealer_score == user_score and dealer_score <= 21:
-                print("Push!")
-            # double bust
-            elif user_score > 21 and dealer_score > 21:
-                print("Double bust! Push!")
-            else:
-                print("You lost.")
-                user_money -= bet
+    if outcome == False:
+        # push
+        if dealer_score == user_score and dealer_score <= 21:
+            print("Push!")
+        # double bust
+        elif user_score > 21 and dealer_score > 21:
+            print("Double bust! Push!")
         else:
-            user_money += bet
+            print("You lost.")
+            user_money -= bet
+    else:
+        user_money += bet
 
     return user_money
 
