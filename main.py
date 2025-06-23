@@ -61,7 +61,7 @@ def draw_card(hand):
 
 def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled):
 
-    bet = input(f"You currently have {user_money}. Please place your bet:").strip()
+    bet = input(f"You currently have {user_money}. Please place your bet: ").strip()
     
     while not bet.isnumeric() or int(bet) > user_money or int(bet) == 0:
         bet = input(f"Invalid input! You currently have {user_money}. Please place your bet:").strip()
@@ -90,10 +90,10 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
         print(f"Your hand: {user_hand}\n")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]\n")
     
-    user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
+    user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
 
     if bet * 2 <= user_money:
-        user_hand, user_score, doubled = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score)
+        user_hand, user_score, doubled = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score, doubled)
 
     return user_hand, user_score, dealer_hand, dealer_score, bet
 
@@ -152,22 +152,22 @@ def hit_stand(hand, score, hand_2, doubled):
 def play_again(user_money):
 
     if user_money > 0:
-        play = input((f"You now have {user_money}. Play again? (y/n)")).strip().lower()
+        play = input((f"You now have {user_money}. Play again? (y/n) ")).strip().lower()
         while play != "y" and play != "n":
-            play = input((f"Invalid input! Please enter if you would like to play again: (y/n)\n"))
+            play = input((f"Invalid input! Please enter if you would like to play again: (y/n) "))
 
         print("\n")
         
         if play.lower() == "y":
             os.system('clear')
-            main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet)
+            main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
         else:
             print("Thanks for playing!")
     else:
         print("Game over!")
     quit()
 
-def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score):
+def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score, doubled):
 
     double_down = input("Double down? (y/n)").strip().lower()
 
@@ -179,7 +179,7 @@ def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_scor
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
-        dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
+        dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled)
 
     return user_hand, user_score, doubled
 
@@ -248,8 +248,8 @@ def game_outcome(user_money, user_score, dealer_score, bet):
 def main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doubled):
 
     user_hand, user_score, dealer_hand, dealer_score, bet = game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled)
-    user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
-    dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
+    user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled)
+    dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled)
     user_money = game_outcome(user_money, user_score, dealer_score, bet)
     play_again(user_money)
 
