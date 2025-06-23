@@ -94,8 +94,6 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
     if bet * 2 <= user_money:
         user_hand, user_score = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score)
 
-    os.system('clear')
-
     return user_hand, user_score, dealer_hand, dealer_score, bet
 
 def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score):
