@@ -60,7 +60,7 @@ def draw_card(hand):
     return added
 
 def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled):
-
+    
     bet = input(f"You currently have {user_money}. Please place your bet: ").strip()
     
     while not bet.isnumeric() or int(bet) > user_money or int(bet) == 0:
