@@ -1,5 +1,6 @@
 from random import randint
 from time import sleep
+import os
 
 print("Welcome to BlackJack!\n")
 
@@ -67,23 +68,25 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
     
     user_score, dealer_score, user_hand, dealer_hand = draw_two_cards(user_score, dealer_score, user_hand, dealer_hand)
 
+    os.system('clear')
+
     if user_score == 21:
         print("BlackJack! You win!")
-        print(f"Your hand: {user_hand}")
-        print(f"Dealer's hand: {dealer_hand}")
+        print(f"Your hand: {user_hand}\n")
+        print(f"Dealer's hand: {dealer_hand}\n")
         user_money += (bet * 1.5)
         user_money = play_again(user_money)
 
     elif dealer_score == 21 and user_score < 21:
-        print("Dealer BlackJack! Unlucky!")
-        print(f"Your hand: {user_hand}")
-        print(f"Dealer's hand: {dealer_hand}")
+        print("Dealer BlackJack! Unlucky!\n")
+        print(f"Your hand: {user_hand}\n")
+        print(f"Dealer's hand: {dealer_hand}\n")
         user_money -= bet
         user_money = play_again(user_money)
 
     else:
-        print(f"Your hand: {user_hand}")
-        print(f"Dealer's hand: [{dealer_hand[0]}, x]")
+        print(f"Your hand: {user_hand}\n")
+        print(f"Dealer's hand: [{dealer_hand[0]}, x]\n")
     
     user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
@@ -96,6 +99,8 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 
     user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money)
 
+    os.system('clear')
+    
     if dealer_score < 17:
         print("Drawing cards...")
     elif dealer_score >= 17 and user_score <= 21 and hand_2 == False:
@@ -143,7 +148,7 @@ def play_again(user_money):
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n)"))
         if play.lower() == "y":
-            clear()
+            os.system('clear')
             main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet)
         else:
             print("Thanks for playing!")
