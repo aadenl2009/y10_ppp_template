@@ -115,7 +115,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
     sleep(2)
     if hand_2 == False:
         print(f"Your hand: {user_hand} ({user_score})\n")
-        print(f"Dealer hand: {dealer_hand} ({dealer_hand})\n")
+        print(f"Dealer hand: {dealer_hand} ({dealer_score})\n")
     else:
         print(f"Hand 1: {user_hand}\n")
         print(f"Hand 2: {user_hand_2}\n")
