@@ -56,7 +56,7 @@ def draw_card(hand):
         added.append(num)
     return added
 
-def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2):
+def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2):
 
     bet = input(f"You currently have {user_money}. Please place your bet:").strip()
     
@@ -90,7 +90,7 @@ def game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score
     if bet * 2 <= user_money:
         user_hand, user_score = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score)
 
-    return user_hand, user_score
+    return user_hand, user_score, bet
 
 def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score):
 
@@ -143,7 +143,7 @@ def play_again(user_money):
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n)"))
         if play.lower() == "y":
-            main(user_hand, user_score, dealer_hand, dealer_score, user_money)
+            main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet)
         else:
             print("Thanks for playing!")
     else:
@@ -226,12 +226,12 @@ def game_outcome(user_money, user_score, dealer_score, bet):
 
     return user_money
 
-def main(user_hand, user_score, dealer_hand, dealer_score, user_money):
+def main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet):
 
-    user_hand, user_score = game_start(bet, user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
+    user_hand, user_score, bet = game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2)
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
     dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
     user_money = game_outcome(user_money, user_score, dealer_score, bet)
     play_again(user_money)
 
-main(user_hand, user_score, dealer_hand, dealer_score, user_money)
+main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet)
