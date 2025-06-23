@@ -93,7 +93,7 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
     user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
 
     if bet * 2 <= user_money:
-        user_hand, user_score, doubled = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score, doubled)
+        user_hand, user_score, doubled, bet = double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score, doubled)
 
     return user_hand, user_score, dealer_hand, dealer_score, bet, doubled
 
@@ -181,7 +181,7 @@ def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_scor
         user_score = calculate_score(user_hand)
         dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled)
 
-    return user_hand, user_score, doubled
+    return user_hand, user_score, doubled, bet
 
 def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled):
 
