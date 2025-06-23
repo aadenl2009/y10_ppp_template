@@ -2,7 +2,7 @@ from random import randint
 from time import sleep
 import os
 
-os.system('clear')
+os.system('cls' if os.name == 'nt' else 'clear')
 print("Welcome to BlackJack!\n")
 
 # set variables
@@ -74,7 +74,7 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
     
     user_score, dealer_score, user_hand, dealer_hand = draw_two_cards(user_score, dealer_score, user_hand, dealer_hand)
 
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     if user_score == 21:
         print("BlackJack! You win!\n")
@@ -105,7 +105,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 
     user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
 
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     if dealer_score < 17:
         print("Drawing cards...\n")
@@ -163,7 +163,7 @@ def play_again(user_money, doubled):
         print("")
 
         if play == "y":
-            os.system('clear')
+            os.system('cls' if os.name == 'nt' else 'clear')
             doubled = False
             main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
         else:
