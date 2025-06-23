@@ -74,20 +74,20 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
 
     if user_score == 21:
         print("BlackJack! You win!\n")
-        print(f"Your hand: {user_hand}\n")
-        print(f"Dealer's hand: {dealer_hand}\n")
+        print(f"Your hand: {user_hand} ({user_score})\n")
+        print(f"Dealer's hand: {dealer_hand} ({dealer_score})\n")
         user_money += (bet * 1.5)
         user_money = play_again(user_money, doubled)
 
     elif dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!\n")
-        print(f"Your hand: {user_hand}\n")
-        print(f"Dealer's hand: {dealer_hand}\n")
+        print(f"Your hand: {user_hand} ({user_score})\n")
+        print(f"Dealer's hand: {dealer_hand} ({dealer_score})\n")
         user_money -= bet
         user_money = play_again(user_money, doubled)
 
     else:
-        print(f"Your hand: {user_hand}\n")
+        print(f"Your hand: {user_hand} ({user_score})\n")
         print(f"Dealer's hand: [{dealer_hand[0]}, x]\n")
     
     user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
@@ -114,12 +114,12 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 
     sleep(2)
     if hand_2 == False:
-        print(f"Your hand: {user_hand}\n")
-        print(f"Dealer hand: {dealer_hand}\n")
+        print(f"Your hand: {user_hand} ({user_score})\n")
+        print(f"Dealer hand: {dealer_hand} ({dealer_hand})\n")
     else:
         print(f"Hand 1: {user_hand}\n")
         print(f"Hand 2: {user_hand_2}\n")
-        print(f"Dealer hand: {dealer_hand}\n")
+        print(f"Dealer hand: {dealer_hand} ({dealer_score})\n")
 
     return dealer_hand, dealer_score
 
@@ -136,7 +136,7 @@ def hit_stand(hand, score, hand_2, doubled):
         while hit_stand == "hit":
             hand = draw_card(hand)
             score = calculate_score(hand)
-            print(f"Your hand: {hand}")
+            print(f"Your hand: {hand} ({score})")
 
             if score > 21:
                 print("You went over 21!\n")
@@ -195,11 +195,11 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
                 user_hand_2 = draw_card(user_hand[1:])
             user_score = calculate_score(user_hand)       
             user_score_2 = calculate_score(user_hand_2)
-            print(f"Hand 1: {user_hand}\n")
+            print(f"Hand 1: {user_hand} ({user_score})\n")
             hand_2 = True
             user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled)
     if hand_2 == True:
-        print(f"Hand 2: {user_hand_2}\n")
+        print(f"Hand 2: {user_hand_2} ({user_score_2})\n")
         hand_2 = False
         user_hand_2, user_score_2 = hit_stand(user_hand_2, user_score_2, hand_2, doubled)
 
