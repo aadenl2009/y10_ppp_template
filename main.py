@@ -149,7 +149,7 @@ def hit_stand(hand, score, hand_2, doubled):
 
     return hand, score
 
-def play_again(user_money):
+def play_again(user_money, doubled):
 
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n) ")).strip().lower()
@@ -160,6 +160,7 @@ def play_again(user_money):
         
         if play.lower() == "y":
             os.system('clear')
+            doubled = False
             main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
         else:
             print("Thanks for playing!")
@@ -251,6 +252,6 @@ def main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doub
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled)
     dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled)
     user_money = game_outcome(user_money, user_score, dealer_score, bet)
-    play_again(user_money)
+    play_again(user_money, doubled)
 
 main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
