@@ -127,8 +127,11 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 def hit_stand(hand, score, hand_2):
 
     hit_stand = input("Hit or stand?").lower().strip()
+
     while hit_stand != "hit" and hit_stand != "stand":
         hit_stand = input("Invalid input! Hit or stand?").lower().strip()
+
+    print("\n")
 
     while hit_stand == "hit":
         hand = draw_card(hand)
@@ -136,7 +139,7 @@ def hit_stand(hand, score, hand_2):
         print(f"Your hand: {hand}")
 
         if score > 21:
-            print("You went over 21!")
+            print("You went over 21!\n")
             break
 
         hit_stand = input("Hit or stand?").lower().strip()
@@ -184,15 +187,16 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
         split_choice = input("Split? (y/n)").lower().strip()
         if split_choice == "y" and hand_2 == False:
             for i in range(2):
+                print("\n")
                 user_hand = draw_card(user_hand[:1])
                 user_hand_2 = draw_card(user_hand[1:])
             user_score = calculate_score(user_hand)       
             user_score_2 = calculate_score(user_hand_2)
-            print(f"Hand 1: {user_hand}")
+            print(f"Hand 1: {user_hand}\n")
             hand_2 = True
             user_hand, user_score = hit_stand(user_hand, user_score, hand_2)
     if hand_2 == True:
-        print(f"Hand 2: {user_hand_2}")
+        print(f"Hand 2: {user_hand_2}\n")
         hand_2 = False
         user_hand_2, user_score_2 = hit_stand(user_hand_2, user_score_2, hand_2)
 
