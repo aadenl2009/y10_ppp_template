@@ -33,6 +33,7 @@ def calculate_score(hand):
         # check if it is an integer
         if isinstance(card, int):
             total += card
+        # face cards
         elif isinstance(card, str) and card != "ace":
             total += 10
         elif card == "ace" and total <= 10:
@@ -59,7 +60,7 @@ def draw_card(hand):
         added.append("ace")
     else:
         added.append(num)
-        
+
     return added
 
 def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled):
