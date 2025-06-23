@@ -194,16 +194,23 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
 
     if user_hand[0] == user_hand [1] and hand_2 == False and bet * 2 <= user_money:
         split_choice = input("Split? (y/n) ").lower().strip()
+
         if split_choice == "y" and hand_2 == False:
+            
             print("")
+
             for i in range(2):
                 user_hand = draw_card(user_hand[:1])
                 user_hand_2 = draw_card(user_hand[1:])
+
             user_score = calculate_score(user_hand)       
             user_score_2 = calculate_score(user_hand_2)
+
             print(f"Hand 1: {user_hand} ({user_score})\n")
+
             hand_2 = True
             user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled)
+
     if hand_2 == True:
         print(f"Hand 2: {user_hand_2} ({user_score_2})\n")
         hand_2 = False
