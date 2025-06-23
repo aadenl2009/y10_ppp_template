@@ -43,6 +43,7 @@ def calculate_score(hand):
     
     if "ace" in hand and total > 21:
         total -= 10 
+        
     return total
 
 def draw_card(hand):
