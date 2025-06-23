@@ -161,6 +161,7 @@ def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_scor
         bet *= 2
         user_hand = draw_card(user_hand)
         user_score = calculate_score(user_hand)
+        print(user_score)
         dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score)
 
     return user_hand, user_score
