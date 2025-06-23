@@ -126,10 +126,10 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 def hit_stand(hand, score, hand_2, doubled):
 
     if doubled == False:
-        hit_stand = input("Hit or stand?").lower().strip()
+        hit_stand = input("Hit or stand? ").lower().strip()
 
         while hit_stand != "hit" and hit_stand != "stand":
-            hit_stand = input("Invalid input! Hit or stand?").lower().strip()
+            hit_stand = input("Invalid input! Hit or stand? ").lower().strip()
 
         print("")
 
