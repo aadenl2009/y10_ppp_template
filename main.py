@@ -67,7 +67,7 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
         instructions = input("Invalid input! Would you like to view instructions? (y/n) ").strip.lower()
 
     if instructions == "y":
-        print("In BlackJack, players get two starting ")
+        print("In BlackJack, players and the dealer get dealt two random cards each, where only one of the dealer's card is visible. The player then has the choice as to whether they can hit or stand. 'Hitting' is the action of drawing another card, while 'Standing' means that the player is happy with their current card. As the aim of the game is to get as close to 21 as possible without going over, players will have to strategically choose whether they want to take a risk and hit, or risk getting lower than the dealer and staying with their current card. The dealer is then forced to hit until they cross 17, and at showdown, whoever has the higher value without crossing 21 wins.")
 
     bet = input(f"You currently have {user_money}. Please place your bet: ").strip()
     
