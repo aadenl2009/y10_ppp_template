@@ -45,22 +45,18 @@ def calculate_score(hand):
     return total
 
 def draw_card(hand):
-
-    added = hand.copy()
     num = randint(1, 13)
-    
     if num == 11:
-        added.append("jack")
+        hand.append("jack")
     elif num == 12:
-        added.append("queen")
+        hand.append("queen")
     elif num == 13:
-        added.append("king")
+        hand.append("king")
     elif num == 1:
-        added.append("ace")
+        hand.append("ace")
     else:
-        added.append(num)
-
-    return added
+        hand.append(num)
+    return hand
 
 def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled):
 
