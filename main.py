@@ -107,20 +107,18 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
     elif dealer_score >= 17 and user_score <= 21 and hand_2 == False:
         print("Showing dealer card...\n")
 
-    os.system('clear')
-
     while dealer_score < 17:
         dealer_hand = draw_card(dealer_hand)
         dealer_score = calculate_score(dealer_hand)
 
     sleep(2)
     if hand_2 == False:
-        print(f"Your hand: {user_hand}")
-        print(f"Dealer hand: {dealer_hand}")
+        print(f"Your hand: {user_hand}\n")
+        print(f"Dealer hand: {dealer_hand}\n")
     else:
-        print(f"Hand 1: {user_hand}")
-        print(f"Hand 2: {user_hand_2}")
-        print(f"Dealer hand: {dealer_hand}")
+        print(f"Hand 1: {user_hand}\n")
+        print(f"Hand 2: {user_hand_2}\n")
+        print(f"Dealer hand: {dealer_hand}\n")
 
     return dealer_hand, dealer_score
 
@@ -152,13 +150,14 @@ def hit_stand(hand, score, hand_2):
 def play_again(user_money):
 
     if user_money > 0:
-        play = input((f"You now have {user_money}. Play again? (y/n)\n")).strip().lower()
+        play = input((f"You now have {user_money}. Play again? (y/n)")).strip().lower()
         while play != "y" and play != "n":
             play = input((f"Invalid input! Please enter if you would like to play again: (y/n)\n"))
 
-        os.system('clear')
+        print("\n")
         
         if play.lower() == "y":
+            os.system('clear')
             main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet)
         else:
             print("Thanks for playing!")
