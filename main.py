@@ -154,7 +154,7 @@ def play_again(user_money):
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n) ")).strip().lower()
         while play != "y" and play != "n":
-            play = input((f"Invalid input! Please enter if you would like to play again: (y/n) "))
+            play = input((f"Invalid input! Play again? (y/n) "))
 
         print("\n")
         
@@ -169,10 +169,10 @@ def play_again(user_money):
 
 def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_score, doubled):
 
-    double_down = input("Double down? (y/n)").strip().lower()
+    double_down = input("Double down? (y/n) ").strip().lower()
 
     while double_down != "y" and double_down != "n":
-        double_down = input("Invalid input! Double down? (y/n)").strip().lower()
+        double_down = input("Invalid input! Double down? (y/n) ").strip().lower()
 
     if double_down == "y":
         doubled = True
