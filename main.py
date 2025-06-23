@@ -60,7 +60,15 @@ def draw_card(hand):
     return added
 
 def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled):
-    
+
+    instructions = input("Would you like to view instructions? (y/n) ").strip().lower()
+
+    while instructions != "y" and instructions != "n":
+        instructions = input("Invalid input! Would you like to view instructions? (y/n) ").strip.lower()
+
+    if instructions == "y":
+        print("In BlackJack, players get two starting ")
+
     bet = input(f"You currently have {user_money}. Please place your bet: ").strip()
     
     while not bet.isnumeric() or int(bet) > user_money or int(bet) == 0:
@@ -154,11 +162,11 @@ def play_again(user_money, doubled):
     if user_money > 0:
         play = input((f"You now have {user_money}. Play again? (y/n) ")).strip().lower()
         while play != "y" and play != "n":
-            play = input((f"Invalid input! Play again? (y/n) "))
+            play = input((f"Invalid input! Play again? (y/n) ")).strip().lower()
 
         print("\n")
         
-        if play.lower() == "y":
+        if play == "y":
             os.system('clear')
             doubled = False
             main(user_hand, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
