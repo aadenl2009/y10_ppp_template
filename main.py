@@ -187,7 +187,7 @@ def double_down(user_hand, user_score, bet, user_money, dealer_hand, dealer_scor
 def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled):
 
     if user_hand[0] == user_hand [1] and hand_2 == False and bet * 2 <= user_money:
-        split_choice = input("Split? (y/n)").lower().strip()
+        split_choice = input("Split? (y/n) ").lower().strip()
         if split_choice == "y" and hand_2 == False:
             print("")
             for i in range(2):
