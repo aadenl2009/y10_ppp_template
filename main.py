@@ -128,21 +128,21 @@ def hit_stand(hand, score, hand_2, doubled):
     if doubled == False:
         hit_stand = input("Hit or stand?").lower().strip()
 
-    while hit_stand != "hit" and hit_stand != "stand":
-        hit_stand = input("Invalid input! Hit or stand?").lower().strip()
+        while hit_stand != "hit" and hit_stand != "stand":
+            hit_stand = input("Invalid input! Hit or stand?").lower().strip()
 
-    print("\n")
+        print("\n")
 
-    while hit_stand == "hit":
-        hand = draw_card(hand)
-        score = calculate_score(hand)
-        print(f"Your hand: {hand}")
+        while hit_stand == "hit":
+            hand = draw_card(hand)
+            score = calculate_score(hand)
+            print(f"Your hand: {hand}")
 
-        if score > 21:
-            print("You went over 21!\n")
-            break
+            if score > 21:
+                print("You went over 21!\n")
+                break
 
-        hit_stand = input("Hit or stand?").lower().strip()
+            hit_stand = input("Hit or stand?").lower().strip()
 
     if hand_2 == True:
         hand = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
