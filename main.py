@@ -5,7 +5,7 @@ import os
 os.system('clear')
 print("Welcome to BlackJack!\n")
 
-# set var
+# set variables
 user_money = 1000
 user_hand = []
 user_score = 0
