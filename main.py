@@ -156,6 +156,8 @@ def play_again(user_money, doubled):
         while play != "y" and play != "n":
             play = input((f"Invalid input! Play again? (y/n) ")).strip().lower()
         
+        print("")
+
         if play == "y":
             os.system('clear')
             doubled = False
