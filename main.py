@@ -100,9 +100,9 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, use
 
     return user_hand, user_score, dealer_hand, dealer_score, bet, doubled
 
-def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled):
+def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled, user_score_2):
 
-    user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
+    user_hand, user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -126,7 +126,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
 
     return dealer_hand, dealer_score
 
-def hit_stand(hand, score, hand_2, doubled, user_hand_2):
+def hit_stand(hand, score, hand_2, doubled, user_hand_2, user_score_2):
 
     if doubled == False:
         hit_stand = input("Hit or stand? ").lower().strip()
@@ -154,7 +154,7 @@ def hit_stand(hand, score, hand_2, doubled, user_hand_2):
                 hit_stand = input("Invalid input! Hit or stand? ").lower().strip()
 
     if hand_2 == True:
-        hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)[1]
+        hand, user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)[1]
 
     return hand, score
 
@@ -170,7 +170,7 @@ def play_again(user_money, doubled):
         if play == "y":
             os.system('cls' if os.name == 'nt' else 'clear')
             doubled = False
-            main(user_hand, user_hand_2, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
+            main(user_hand, user_hand_2, user_score, user_score_2, dealer_hand, dealer_score, user_money, bet, doubled)
         else:
             print("Thanks for playing!")
     else:
@@ -222,7 +222,7 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
         hand_2 = False
         user_hand_2, user_score_2 = hit_stand(user_hand_2, user_score_2, hand_2, doubled, user_hand_2)
 
-    return user_hand, user_hand_2
+    return user_hand, user_hand_2, user_score_2
 
 def game_outcome(user_money, user_score, dealer_score, bet):
 
@@ -265,13 +265,13 @@ def game_outcome(user_money, user_score, dealer_score, bet):
 
     return user_money
 
-def main(user_hand, user_hand_2, user_score, dealer_hand, dealer_score, user_money, bet, doubled):
+def main(user_hand, user_hand_2, user_score, user_score_2, dealer_hand, dealer_score, user_money, bet, doubled):
 
     user_hand, user_score, dealer_hand, dealer_score, bet, doubled = game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled)
-    user_hand, user_hand_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
+    user_hand, user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled, user_hand_2)
     dealer_hand, dealer_score = dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, bet, hand_2, user_score, doubled)
     user_money = game_outcome(user_money, user_score, dealer_score, bet)
     play_again(user_money, doubled)
 
-main(user_hand, user_hand_2, user_score, dealer_hand, dealer_score, user_money, bet, doubled)
+main(user_hand, user_hand_2, user_score, user_score_2, dealer_hand, dealer_score, user_money, bet, doubled)
