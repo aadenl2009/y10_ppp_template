@@ -217,7 +217,7 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
                 print(f"Hand 1: {user_hand} ({user_score})\n")
 
                 hand_2 = True
-                user_hand, user_score, user_score_2 = hit_stand(user_hand, user_score, hand_2, doubled, user_hand_2)
+                user_hand, user_score, user_score_2 = hit_stand(user_hand, user_score, hand_2, doubled, user_hand_2, user_score_2)
 
     else:
         print(f"Hand 2: {user_hand_2} ({user_score_2})\n")
