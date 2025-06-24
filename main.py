@@ -2,7 +2,9 @@ from random import randint
 from time import sleep
 import os
 
+# clears the screen
 os.system('cls' if os.name == 'nt' else 'clear')
+
 print("Welcome to BlackJack!\n")
 
 # set variables
@@ -107,7 +109,7 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
     os.system('cls' if os.name == 'nt' else 'clear')
 
     if dealer_score < 17:
-        print("Drawing cards...\n")
+        print("Drawing cards...")
     elif dealer_score >= 17 and user_score <= 21 and hand_2 == False:
         print("Showing dealer card...\n")
 
@@ -116,6 +118,9 @@ def dealer_show(dealer_score, user_money, dealer_hand, user_hand, user_hand_2, b
         dealer_score = calculate_score(dealer_hand)
 
     sleep(2)
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     if hand_2 == False:
         print(f"Your hand: {user_hand} ({user_score})\n")
         print(f"Dealer hand: {dealer_hand} ({dealer_score})\n")
@@ -156,7 +161,7 @@ def hit_stand(hand, score, hand_2, doubled, user_hand_2, user_score_2):
             print("")
 
     if hand_2 == True:
-        hand, user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)[1]
+        user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)[1]
 
     return hand, score
 
@@ -204,7 +209,6 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
             split_choice = input("Split? (y/n) ").lower().strip()
 
             if split_choice == "y" and hand_2 == False:
-                
                 print("")
 
                 for i in range(2):
@@ -217,12 +221,12 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
                 print(f"Hand 1: {user_hand} ({user_score})\n")
 
                 hand_2 = True
-                user_hand, user_score, user_score_2 = hit_stand(user_hand, user_score, hand_2, doubled, user_hand_2, user_score_2)
+                user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled, user_hand_2, user_score_2)
 
     else:
         print(f"Hand 2: {user_hand_2} ({user_score_2})\n")
         hand_2 = False
-        user_hand_2, user_score_2 = hit_stand(user_hand_2, user_score_2, hand_2, doubled, user_hand_2)
+        user_hand_2, user_score_2 = hit_stand(user_hand_2, user_score_2, hand_2, doubled, user_hand_2, user_score_2)
 
     return user_hand, user_hand_2, user_score_2
 
