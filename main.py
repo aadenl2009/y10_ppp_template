@@ -274,9 +274,9 @@ def game_outcome(user_money, score, dealer_score, bet):
 
 def main(user_hand, user_hand_2, user_score, user_score_2, dealer_hand, dealer_score, user_money, bet, doubled):
 
-    user_hand, user_score, dealer_hand, dealer_score, bet, doubled = game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, user_hand_2, doubled)
+    user_hand, user_score, dealer_hand, dealer_score, bet, doubled = game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, doubled)
 
-    if bet * 2 >= user_money:
+    if bet * 2 <= user_money:
         user_hand, user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled, dealer_score)
 
     user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled, user_score, user_hand_2, user_score_2)
