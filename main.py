@@ -161,7 +161,7 @@ def hit_stand(hand, score, hand_2, doubled, user_hand_2, user_score_2):
             print("")
 
     if hand_2 == True:
-        user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)[1]
+        user_score, user_hand_2, user_score_2 = split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_money, doubled)[1]
 
     return hand, score
 
