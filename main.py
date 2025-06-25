@@ -226,12 +226,10 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
 
                 hand_2 = True
                 user_hand, user_score = hit_stand(user_hand, user_score, hand_2, doubled, user_score, user_hand_2, user_score_2)
-                user_money = game_outcome(user_money, user_score, dealer_score, bet)
     else:
         print(f"Hand 2: {user_hand_2} ({user_score_2})\n")
         hand_2 = False
         user_hand_2, user_score_2 = hit_stand(user_hand_2, user_score_2, hand_2, doubled, user_score, user_hand_2, user_score_2)
-        user_money = game_outcome(user_money, user_score_2, dealer_score, bet)
 
     return user_hand, user_hand_2, user_score_2
 
