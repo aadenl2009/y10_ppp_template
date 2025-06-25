@@ -213,7 +213,7 @@ def split(user_hand, user_score, hand_2, user_hand_2, user_score_2, bet, user_mo
 
                 for i in range(2):
                     user_hand = draw_card(user_hand[:1])
-                    user_hand_2 = draw_card(user_hand[1:])
+                    user_hand_2 = draw_card(user_hand[:1])
 
                 user_score = calculate_score(user_hand)       
                 user_score_2 = calculate_score(user_hand_2)
