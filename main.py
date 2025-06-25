@@ -79,13 +79,17 @@ def game_start(user_money, user_hand, user_score, dealer_hand, dealer_score, dou
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
+    # user blackjack
     if user_score == 21:
         print("BlackJack! You win!\n")
         print(f"Your hand: {user_hand} ({user_score})\n")
         print(f"Dealer's hand: {dealer_hand} ({dealer_score})\n")
         user_money += (bet * 1.5)
+        if (str(user_money)[-1]) == "0":
+            user_money = int(user_money)
         user_money = play_again(user_money, doubled)
 
+    # dealer blackjack
     elif dealer_score == 21 and user_score < 21:
         print("Dealer BlackJack! Unlucky!\n")
         print(f"Your hand: {user_hand} ({user_score})\n")
